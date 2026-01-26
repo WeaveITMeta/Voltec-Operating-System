@@ -11,7 +11,7 @@
 [package]
 name = "libqft"
 version = "1.0.0"
-edition = "2024"
+edition = "2021"
 authors = ["MACROHARD Quantum OS Team"]
 license = "MIT OR Apache-2.0"
 description = "Production-grade C FFI bindings for Quantum File Type (.qft) format"
@@ -20,7 +20,7 @@ documentation = "https://docs.rs/libqft"
 keywords = ["quantum", "ffi", "qft", "mps", "tensor-network"]
 categories = ["science", "api-bindings", "encoding"]
 readme = "README.md"
-rust-version = "1.83"
+rust-version = "1.70"
 
 # =============================================================================
 # Library Configuration - Produces both static and dynamic C libraries

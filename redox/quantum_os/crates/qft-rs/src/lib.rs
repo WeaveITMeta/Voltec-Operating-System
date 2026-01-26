@@ -638,8 +638,9 @@ pub fn bell_state() -> Result<QftFile> {
 pub fn ghz_state(num_qubits: usize) -> Result<QftFile> {
     let mut state = QftFile::new(num_qubits)?;
     let sqrt2_inv = 1.0 / 2.0_f64.sqrt();
+    let last_idx = state.dimension() - 1;
     state.amplitudes[0] = Complex64::new(sqrt2_inv, 0.0);
-    state.amplitudes[state.dimension() - 1] = Complex64::new(sqrt2_inv, 0.0);
+    state.amplitudes[last_idx] = Complex64::new(sqrt2_inv, 0.0);
     Ok(state)
 }
 
@@ -803,8 +804,6 @@ impl<'a> IntoIterator for &'a QftFile {
 // =============================================================================
 // Section 7: Re-exports
 // =============================================================================
-
-pub use num_complex::Complex64;
 
 /// Prelude for convenient imports.
 pub mod prelude {

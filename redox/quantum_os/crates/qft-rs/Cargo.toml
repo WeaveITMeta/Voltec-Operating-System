@@ -10,7 +10,7 @@
 [package]
 name = "qft-rs"
 version = "1.0.0"
-edition = "2024"
+edition = "2021"
 authors = ["MACROHARD Quantum OS Team"]
 license = "MIT OR Apache-2.0"
 description = "Production-grade native Rust SDK for Quantum File Type (.qft) format"
@@ -19,7 +19,7 @@ documentation = "https://docs.rs/qft-rs"
 keywords = ["quantum", "qft", "mps", "tensor-network", "quantum-computing"]
 categories = ["science", "encoding", "data-structures"]
 readme = "README.md"
-rust-version = "1.83"
+rust-version = "1.70"
 
 [lib]
 name = "qft"
@@ -29,12 +29,8 @@ path = "src/lib.rs"
 # Dependencies
 # =============================================================================
 [dependencies]
-# Core quantum runtime
-quantum_runtime = { path = "../quantum_runtime", features = ["qft_format", "qft_golay"] }
-
 # Numerics
 num-complex = "0.4"
-ndarray = "0.16"
 
 # Error handling
 thiserror = "2"
