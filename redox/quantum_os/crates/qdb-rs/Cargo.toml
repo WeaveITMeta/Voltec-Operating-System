@@ -8,9 +8,12 @@ license = "MIT OR Apache-2.0"
 repository = "https://github.com/WeaveITMeta/Quantum-Operating-System"
 keywords = ["quantum", "database", "qft", "tensor-network", "mps"]
 categories = ["database", "science", "data-structures"]
+readme = "README.md"
+documentation = "https://docs.rs/qdb-rs"
+homepage = "https://github.com/WeaveITMeta/Quantum-Operating-System"
 
 [dependencies]
-qft = { package = "qft-rs", path = "../qft-rs" }
+qft = { package = "qft-rs", version = "1.0" }
 num-complex = "0.4"
 serde = { version = "1.0", features = ["derive"] }
 serde_json = "1.0"
