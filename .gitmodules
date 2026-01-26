@@ -1,0 +1,3 @@
+[submodule "redox/quantum_os/external/eustress-engine"]
+	path = redox/quantum_os/external/eustress-engine
+	url = https://github.com/WeaveITMeta/EustressEngine.git
