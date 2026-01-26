@@ -2,10 +2,16 @@ ThisBuild / version := "1.0.0"
 ThisBuild / scalaVersion := "3.3.1"
 ThisBuild / organization := "dev.macrohard"
 
+// Sonatype publishing settings
+ThisBuild / sonatypeCredentialHost := "s01.oss.sonatype.org"
+ThisBuild / sonatypeRepository := "https://s01.oss.sonatype.org/service/local"
+ThisBuild / publishTo := sonatypePublishToBundle.value
+ThisBuild / publishMavenStyle := true
+
 lazy val root = (project in file("."))
   .settings(
     name := "qft-scala",
-    description := "Production-grade Scala SDK for Quantum File Type (.qft) format",
+    description := "Production-grade Scala SDK for Quantum File Type (.qft) format - quantum state storage using MPS tensor networks",
     
     libraryDependencies ++= Seq(
       "com.google.code.gson" % "gson" % "2.10.1",
@@ -31,5 +37,11 @@ lazy val root = (project in file("."))
         email = "quantum@macrohard.dev",
         url = url("https://github.com/WeaveITMeta")
       )
-    )
+    ),
+    
+    // PGP signing for Maven Central
+    usePgpKeyHex("YOUR_PGP_KEY_ID"),
+    
+    // Sonatype bundle release
+    sonatypeBundleDirectory := (ThisBuild / baseDirectory).value / "target" / "sonatype-staging"
   )
