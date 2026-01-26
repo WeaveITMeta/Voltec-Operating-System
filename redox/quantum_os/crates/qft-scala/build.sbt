@@ -1,6 +1,6 @@
 ThisBuild / version := "1.0.0"
 ThisBuild / scalaVersion := "3.3.1"
-ThisBuild / organization := "dev.macrohard"
+ThisBuild / organization := "io.github.weaveitMeta"
 
 // Sonatype publishing settings
 ThisBuild / sonatypeCredentialHost := "s01.oss.sonatype.org"
