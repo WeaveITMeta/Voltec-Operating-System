@@ -44,7 +44,7 @@ pub mod transaction;
 
 pub use entry::{Entry, EntryType, Key, Value};
 pub use error::{QdbError, Result};
-pub use storage::{Backend, DiskBackend, MemoryBackend, QDB};
+pub use storage::{Backend, DiskBackend, MemoryBackend, QDB, QdbConfig, RadiationMode};
 
 /// Prelude for convenient imports
 pub mod prelude {

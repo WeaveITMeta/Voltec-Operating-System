@@ -417,6 +417,18 @@ pub struct QDB<B: Backend = MemoryBackend> {
     stats: QdbStats,
 }
 
+/// Radiation hardening mode for space applications
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Default)]
+pub enum RadiationMode {
+    /// Standard mode - no radiation hardening
+    #[default]
+    Standard,
+    /// Space hardened - SEU mitigation enabled
+    SpaceHardened,
+    /// Maximum protection - TMR + ECC + scrubbing
+    MaxProtection,
+}
+
 /// QDB configuration
 #[derive(Debug, Clone)]
 pub struct QdbConfig {
@@ -430,6 +442,12 @@ pub struct QdbConfig {
     pub max_entry_size: usize,
     /// Read-only mode
     pub read_only: bool,
+    /// Radiation hardening mode
+    pub radiation_mode: RadiationMode,
+    /// Enable triple modular redundancy for critical metadata
+    pub triple_redundancy: bool,
+    /// Enable ML-KEM post-quantum signatures
+    pub post_quantum_signing: bool,
 }
 
 impl Default for QdbConfig {
@@ -440,6 +458,32 @@ impl Default for QdbConfig {
             truncation_threshold: 1e-10,
             max_entry_size: 1024 * 1024 * 100, // 100 MB
             read_only: false,
+            radiation_mode: RadiationMode::Standard,
+            triple_redundancy: false,
+            post_quantum_signing: false,
+        }
+    }
+}
+
+impl QdbConfig {
+    /// Create a space-hardened configuration
+    pub fn space_hardened() -> Self {
+        Self {
+            golay_enabled: true,
+            radiation_mode: RadiationMode::SpaceHardened,
+            triple_redundancy: true,
+            ..Default::default()
+        }
+    }
+
+    /// Create a maximum protection configuration
+    pub fn max_protection() -> Self {
+        Self {
+            golay_enabled: true,
+            radiation_mode: RadiationMode::MaxProtection,
+            triple_redundancy: true,
+            post_quantum_signing: true,
+            ..Default::default()
         }
     }
 }
@@ -481,6 +525,11 @@ impl<B: Backend> QDB<B> {
     /// Get statistics
     pub fn stats(&self) -> &QdbStats {
         &self.stats
+    }
+
+    /// Get a reference to the backend for direct queries
+    pub fn backend(&self) -> &B {
+        &self.backend
     }
 
     // =========================================================================
