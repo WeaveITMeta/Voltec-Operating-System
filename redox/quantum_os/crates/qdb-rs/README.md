@@ -16,6 +16,7 @@ A hybrid quantum-classical database leveraging the QFT format for polynomial sto
 - **Multiple Backends**: Memory, disk, and extensible backend abstraction
 - **Radiation Hardening**: SEU mitigation modes for space applications
 - **Post-Quantum Security**: ML-KEM signing support via QFT format
+- **Vector Store**: HNSW-based embedding storage with similarity search (cosine, euclidean, dot product)
 
 ## Installation
 
@@ -298,6 +299,62 @@ let candidates = search.search()?;
 
 **Measurement**: Returns indices with highest amplitude after amplification
 
+## Vector Store
+
+QDB includes a built-in vector store for embedding storage and similarity search:
+
+```rust
+use qdb_rs::vector::{VectorStore, VectorEntry, Embedding, DistanceMetric};
+
+// Create a vector store for 384-dim embeddings
+let mut store = VectorStore::with_dim(384);
+
+// Add documents with embeddings
+store.put(
+    VectorEntry::new("doc1", Embedding::new(vec![0.1, 0.2, ...]))
+        .with_content("Quantum computing uses qubits")
+        .with_namespace("physics")
+)?;
+
+// Similarity search
+let query = Embedding::new(vec![0.1, 0.2, ...]);
+let results = store.search(&query, 5);
+
+for result in results {
+    println!("{}: score={:.4}", result.id, result.score);
+}
+
+// Filter by namespace
+let physics_docs = store.search_namespace(&query, 10, "physics");
+```
+
+### Distance Metrics
+
+| Metric | Description | Use Case |
+|--------|-------------|----------|
+| `Cosine` | 1 - cosine similarity | Text embeddings (default) |
+| `Euclidean` | L2 distance | Image embeddings |
+| `DotProduct` | Negative dot product | Normalized vectors |
+| `Manhattan` | L1 distance | Sparse vectors |
+
+### HNSW Index
+
+The vector index uses an HNSW-inspired algorithm for O(log N) approximate nearest neighbor search:
+
+```rust
+use qdb_rs::vector::{VectorIndex, VectorIndexConfig};
+
+let config = VectorIndexConfig {
+    m: 16,              // Connections per node
+    ef_construction: 200, // Build quality
+    ef_search: 50,      // Search quality
+    metric: DistanceMetric::Cosine,
+    ..Default::default()
+};
+
+let mut index = VectorIndex::with_config(384, config);
+```
+
 ## Radiation Hardening (Space Applications)
 
 ```rust
@@ -335,6 +392,7 @@ cargo run --example basic_usage
 cargo run --example quantum_transactions
 cargo run --example grover_search
 cargo run --example logosq_integration
+cargo run --example vector_store
 ```
 
 ## Documentation

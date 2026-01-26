@@ -72,6 +72,14 @@ pub enum QdbError {
     /// Capacity exceeded
     #[error("Capacity exceeded: {0}")]
     CapacityExceeded(String),
+
+    /// Invalid input
+    #[error("Invalid input: {0}")]
+    InvalidInput(String),
+
+    /// Vector store error
+    #[error("Vector store error: {0}")]
+    VectorError(String),
 }
 
 /// Result type alias for QDB operations

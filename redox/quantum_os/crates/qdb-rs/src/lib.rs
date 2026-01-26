@@ -41,10 +41,12 @@ pub mod index;
 pub mod query;
 pub mod storage;
 pub mod transaction;
+pub mod vector;
 
 pub use entry::{Entry, EntryType, Key, Value};
 pub use error::{QdbError, Result};
 pub use storage::{Backend, DiskBackend, MemoryBackend, QDB, QdbConfig, RadiationMode};
+pub use vector::{DistanceMetric, Embedding, SearchResult, VectorEntry, VectorIndex, VectorStore, VectorStoreConfig};
 
 /// Prelude for convenient imports
 pub mod prelude {
@@ -52,5 +54,6 @@ pub mod prelude {
     pub use super::error::{QdbError, Result};
     pub use super::query::{Query, QueryResult};
     pub use super::storage::{Backend, QDB};
+    pub use super::vector::{DistanceMetric, Embedding, SearchResult, VectorEntry, VectorStore};
     pub use qft::prelude::*;
 }
