@@ -1,4 +1,20 @@
-# QFT SDK Publishing Commands - Complete Step-by-Step
+# QFT SDK Publishing Commands
+
+## Published SDKs (v1.0.0) - January 25, 2026
+
+| SDK | Registry | Install Command |
+|-----|----------|-----------------|
+| **qft-rs** | [crates.io](https://crates.io/crates/qft-rs) | `cargo add qft-rs` |
+| **qft-quantum** | [PyPI](https://pypi.org/project/qft-quantum/) | `pip install qft-quantum` |
+| **qft-wasm** | [npm](https://www.npmjs.com/package/qft-wasm) | `npm install qft-wasm` |
+| **qft-ts** | [npm](https://www.npmjs.com/package/qft-ts) | `npm install qft-ts` |
+| **qft-go** | Go Proxy | `go get github.com/WeaveITMeta/Quantum-Operating-System/redox/quantum_os/crates/qft-go@v1.0.0` |
+| **qft-java** | Maven Central | `io.github.weaveitmeta:qft-java:1.0.0` |
+| **qft-scala** | Maven Central | `io.github.weaveitmeta:qft-scala_3:1.0.0` |
+
+---
+
+## Original Publishing Commands - Complete Step-by-Step
 
 Sequential command-line instructions for publishing each SDK to its respective package registry.
 

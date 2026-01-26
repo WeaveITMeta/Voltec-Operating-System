@@ -1,12 +1,14 @@
 ThisBuild / version := "1.0.0"
 ThisBuild / scalaVersion := "3.3.1"
-ThisBuild / organization := "io.github.weaveitMeta"
+ThisBuild / organization := "io.github.weaveitmeta"
 
-// Sonatype publishing settings
-ThisBuild / sonatypeCredentialHost := "s01.oss.sonatype.org"
-ThisBuild / sonatypeRepository := "https://s01.oss.sonatype.org/service/local"
+// Sonatype Central Portal publishing settings
+ThisBuild / sonatypeCredentialHost := "central.sonatype.com"
 ThisBuild / publishTo := sonatypePublishToBundle.value
 ThisBuild / publishMavenStyle := true
+
+// GPG settings
+Global / PgpKeys.gpgCommand := "C:\\Program Files\\GnuPG\\bin\\gpg.exe"
 
 lazy val root = (project in file("."))
   .settings(
@@ -40,7 +42,8 @@ lazy val root = (project in file("."))
     ),
     
     // PGP signing for Maven Central
-    usePgpKeyHex("YOUR_PGP_KEY_ID"),
+    usePgpKeyHex("AA2F2F2F6555B646"),
+    PgpKeys.gpgCommand := "C:\\Program Files\\GnuPG\\bin\\gpg.exe",
     
     // Sonatype bundle release
     sonatypeBundleDirectory := (ThisBuild / baseDirectory).value / "target" / "sonatype-staging"

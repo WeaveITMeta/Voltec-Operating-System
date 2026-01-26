@@ -235,7 +235,7 @@ class QftFile private (
     map.put("truncationThreshold", config.truncationThreshold)
     map.put("amplitudesReal", amplitudesReal.toArray)
     map.put("amplitudesImag", amplitudesImag.toArray)
-    map.put("metadata", new java.util.HashMap[String, String](_metadata.asJava))
+    map.put("metadata", mapToJava(_metadata))
     
     gson.toJson(map)
   }

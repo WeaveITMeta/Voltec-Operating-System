@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>io.github.weaveitmeta</groupId>
+    <artifactId>qft-scala_3</artifactId>
+    <version>1.0.0</version>
+    <packaging>jar</packaging>
+
+    <name>QFT Scala SDK</name>
+    <description>Production-grade Scala SDK for Quantum File Type (.qft) format</description>
+    <url>https://github.com/WeaveITMeta/Quantum-Operating-System</url>
+
+    <licenses>
+        <license>
+            <name>MIT License</name>
+            <url>https://opensource.org/licenses/MIT</url>
+        </license>
+    </licenses>
+
+    <developers>
+        <developer>
+            <id>macrohard</id>
+            <name>MACROHARD Quantum OS Team</name>
+            <email>quantum@macrohard.dev</email>
+        </developer>
+    </developers>
+
+    <scm>
+        <connection>scm:git:git://github.com/WeaveITMeta/Quantum-Operating-System.git</connection>
+        <developerConnection>scm:git:ssh://github.com:WeaveITMeta/Quantum-Operating-System.git</developerConnection>
+        <url>https://github.com/WeaveITMeta/Quantum-Operating-System</url>
+    </scm>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.sonatype.central</groupId>
+                <artifactId>central-publishing-maven-plugin</artifactId>
+                <version>0.6.0</version>
+                <extensions>true</extensions>
+                <configuration>
+                    <publishingServerId>central</publishingServerId>
+                    <autoPublish>true</autoPublish>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+</project>
