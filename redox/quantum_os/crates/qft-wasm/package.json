@@ -1,0 +1,37 @@
+{
+  "name": "qft-wasm",
+  "version": "1.0.0",
+  "description": "Production-grade WebAssembly SDK for Quantum File Type (.qft) format",
+  "main": "pkg/qft_wasm.js",
+  "module": "pkg/qft_wasm.js",
+  "types": "pkg/qft_wasm.d.ts",
+  "files": [
+    "pkg/*"
+  ],
+  "scripts": {
+    "build": "wasm-pack build --target web --release",
+    "build:node": "wasm-pack build --target nodejs --release",
+    "build:bundler": "wasm-pack build --target bundler --release",
+    "test": "wasm-pack test --headless --chrome",
+    "prepublishOnly": "npm run build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/WeaveITMeta/Quantum-Operating-System.git"
+  },
+  "keywords": [
+    "quantum",
+    "wasm",
+    "webassembly",
+    "qft",
+    "mps",
+    "tensor-network",
+    "quantum-computing"
+  ],
+  "author": "MACROHARD Quantum OS Team",
+  "license": "MIT OR Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/WeaveITMeta/Quantum-Operating-System/issues"
+  },
+  "homepage": "https://github.com/WeaveITMeta/Quantum-Operating-System#readme"
+}

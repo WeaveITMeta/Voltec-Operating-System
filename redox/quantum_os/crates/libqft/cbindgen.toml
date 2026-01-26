@@ -1,0 +1,34 @@
+# cbindgen configuration for libqft C header generation
+
+[defines]
+
+[export]
+include = []
+exclude = []
+
+[export.rename]
+
+[enum]
+rename_variants = "ScreamingSnakeCase"
+
+[fn]
+rename_args = "None"
+
+[struct]
+rename_fields = "None"
+
+[macro_expansion]
+bitflags = true
+
+[parse]
+parse_deps = false
+include = []
+exclude = []
+clean = false
+extra_bindings = []
+
+[parse.expand]
+crates = []
+all_features = false
+default_features = true
+features = []

@@ -1,0 +1,70 @@
+[build-system]
+requires = ["maturin>=1.4,<2.0"]
+build-backend = "maturin"
+
+[project]
+name = "qft"
+version = "1.0.0"
+description = "Production-grade Python SDK for Quantum File Type (.qft) format"
+readme = "README.md"
+license = { text = "MIT OR Apache-2.0" }
+requires-python = ">=3.8"
+authors = [
+    { name = "MACROHARD Quantum OS Team", email = "quantum@macrohard.dev" }
+]
+keywords = ["quantum", "qft", "mps", "tensor-network", "quantum-computing"]
+classifiers = [
+    "Development Status :: 5 - Production/Stable",
+    "Intended Audience :: Science/Research",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "License :: OSI Approved :: Apache Software License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Rust",
+    "Topic :: Scientific/Engineering :: Physics",
+    "Topic :: Scientific/Engineering :: Information Analysis",
+    "Typing :: Typed",
+]
+dependencies = [
+    "numpy>=1.20",
+]
+
+[project.optional-dependencies]
+qiskit = ["qiskit>=1.0"]
+cirq = ["cirq>=1.0"]
+dev = [
+    "pytest>=7.0",
+    "pytest-benchmark>=4.0",
+    "mypy>=1.0",
+    "ruff>=0.1",
+]
+all = ["qft[qiskit,cirq,dev]"]
+
+[project.urls]
+Homepage = "https://github.com/WeaveITMeta/Quantum-Operating-System"
+Documentation = "https://docs.rs/qft-python"
+Repository = "https://github.com/WeaveITMeta/Quantum-Operating-System"
+Changelog = "https://github.com/WeaveITMeta/Quantum-Operating-System/blob/main/CHANGELOG.md"
+
+[tool.maturin]
+python-source = "python"
+module-name = "qft"
+features = ["pyo3/extension-module"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py"]
+
+[tool.mypy]
+python_version = "3.8"
+strict = true
+
+[tool.ruff]
+line-length = 100
+target-version = "py38"

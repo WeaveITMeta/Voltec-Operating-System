@@ -1,0 +1,73 @@
+# =============================================================================
+# qft-python - Python Bindings for Quantum File Type (.qft)
+# =============================================================================
+# Table of Contents:
+#   1. Package Configuration - Crate metadata and PyO3 settings
+#   2. Library Configuration - cdylib for Python extension module
+#   3. Dependencies - PyO3, NumPy interop, core quantum runtime
+#   4. Features - Optional functionality toggles
+# =============================================================================
+
+[package]
+name = "qft-python"
+version = "1.0.0"
+edition = "2024"
+authors = ["MACROHARD Quantum OS Team"]
+license = "MIT OR Apache-2.0"
+description = "Production-grade Python bindings for Quantum File Type (.qft) format"
+repository = "https://github.com/WeaveITMeta/Quantum-Operating-System"
+documentation = "https://docs.rs/qft-python"
+keywords = ["quantum", "python", "qft", "mps", "tensor-network"]
+categories = ["science", "api-bindings", "encoding"]
+readme = "README.md"
+rust-version = "1.83"
+
+# =============================================================================
+# Library Configuration - Python extension module
+# =============================================================================
+[lib]
+name = "qft"
+crate-type = ["cdylib"]
+
+# =============================================================================
+# Dependencies
+# =============================================================================
+[dependencies]
+# Core quantum runtime
+quantum_runtime = { path = "../quantum_runtime", features = ["qft_format", "qft_golay"] }
+
+# Python bindings
+pyo3 = { version = "0.22", features = ["extension-module"] }
+
+# NumPy interop
+numpy = "0.22"
+
+# Error handling
+thiserror = "2"
+
+# Serialization
+serde_json = "1.0"
+
+[dev-dependencies]
+tempfile = "3"
+
+# =============================================================================
+# Features
+# =============================================================================
+[features]
+default = []
+# Enable abi3 for stable ABI across Python versions
+abi3 = ["pyo3/abi3-py38"]
+# Enable multiple Python versions
+abi3-py38 = ["pyo3/abi3-py38"]
+abi3-py39 = ["pyo3/abi3-py39"]
+abi3-py310 = ["pyo3/abi3-py310"]
+abi3-py311 = ["pyo3/abi3-py311"]
+abi3-py312 = ["pyo3/abi3-py312"]
+
+# =============================================================================
+# Build Configuration
+# =============================================================================
+[package.metadata.maturin]
+python-source = "python"
+module-name = "qft"
