@@ -307,7 +307,9 @@ fn train_with_checkpoints(
             // Add training metadata
             qft.set_metadata("epoch", &epoch.to_string());
             qft.set_metadata("loss", &(total_loss / data.len() as f64).to_string());
-            qft.set_metadata("params", &serde_json::to_string(&classifier.params).unwrap());
+            if let Ok(params_json) = serde_json::to_string(&classifier.params) {
+                qft.set_metadata("params", &params_json);
+            }
             
             qft.save(&checkpoint_path).expect("Failed to save checkpoint");
             

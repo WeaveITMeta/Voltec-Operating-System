@@ -176,7 +176,9 @@ fn h2_example() {
         println!("R = {:.2} Å: E = {:.6} Ha", r, result.energy);
         
         // Save ground state
-        result.state.save(&format!("h2_r{:.2}.qft", r)).unwrap();
+        if let Err(e) = result.state.save(&format!("h2_r{:.2}.qft", r)) {
+            eprintln!("Failed to save state for R={:.2}: {:?}", r, e);
+        }
     }
 }
 ```
@@ -197,9 +199,13 @@ fn save_ground_state(result: &VQEResult, molecule: &str, path: &Path) {
     
     qft.set_metadata("molecule", molecule);
     qft.set_metadata("energy_hartree", &result.energy.to_string());
-    qft.set_metadata("params", &serde_json::to_string(&result.params).unwrap());
+    if let Ok(params_json) = serde_json::to_string(&result.params) {
+        qft.set_metadata("params", &params_json);
+    }
     
-    qft.save(path).unwrap();
+    if let Err(e) = qft.save(path) {
+        eprintln!("Failed to save ground state: {:?}", e);
+    }
 }
 ```
 
