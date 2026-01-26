@@ -28,6 +28,38 @@ cargo publish
 
 ## 2. qft-python (Python → PyPI)
 
+### Prerequisites
+
+Configure `$HOME/.pypirc`:
+
+```ini
+[pypi]
+  username = __token__
+  password = pypi-YOUR_API_TOKEN
+```
+
+Get your token from: https://pypi.org/manage/account/token/
+
+### Using Twine (Recommended)
+
+```bash
+cd redox/quantum_os/crates/qft-python
+
+# Install build tools
+pip install build twine
+
+# Build source distribution and wheel
+python -m build
+
+# Check the package
+twine check dist/*
+
+# Upload to PyPI
+twine upload dist/*
+```
+
+### Using Maturin (for Rust bindings)
+
 ```bash
 cd redox/quantum_os/crates/qft-python
 
@@ -37,8 +69,8 @@ pip install maturin
 # Build wheels
 maturin build --release
 
-# Publish (use token from https://pypi.org/manage/account/token/)
-maturin publish --username __token__ --password pypi-YOUR_API_TOKEN
+# Publish
+maturin publish
 ```
 
 ---
@@ -223,7 +255,7 @@ conan upload libqft/1.0.0 -r=YOUR_REMOTE --all
 | SDK | Directory | Publish Command |
 |-----|-----------|-----------------|
 | qft-rs | `crates/qft-rs` | `cargo publish` |
-| qft-python | `crates/qft-python` | `maturin publish` |
+| qft-python | `crates/qft-python` | `twine upload dist/*` |
 | qft-ts | `crates/qft-ts` | `bun publish --access public` |
 | qft-wasm | `crates/qft-wasm/pkg` | `npm publish --access public` |
 | qft-go | `crates/qft-go` | `git tag qft-go/v1.0.0 && git push --tags` |
@@ -260,7 +292,7 @@ cargo publish
 
 echo "=== Publishing qft-python ==="
 cd $ROOT/redox/quantum_os/crates/qft-python
-maturin publish
+python -m build && twine upload dist/*
 
 echo "=== Publishing qft-ts ==="
 cd $ROOT/redox/quantum_os/crates/qft-ts
