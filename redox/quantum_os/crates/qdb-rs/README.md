@@ -337,6 +337,31 @@ cargo run --example grover_search
 cargo run --example logosq_integration
 ```
 
+## Documentation
+
+- [Entanglement Semantics](docs/ENTANGLEMENT_SEMANTICS.md) - Formal specification of entanglement groups
+- [Radiation Hardening](docs/RADIATION_HARDENING.md) - SEU mitigation and space deployment guide
+
+## Roadmap
+
+### v0.2 (Q2 2026)
+- [ ] Distributed sharding with 2PC for entanglement groups
+- [ ] Async backend trait (`AsyncBackend`)
+- [ ] Query planner with cost-based optimization
+- [ ] Index::quantum with precomputed Grover oracles
+
+### v1.0 (Q4 2026)
+- [ ] Production-ready stability
+- [ ] Full LogosQ MPS bridge (`QftFile::from_mps`, `to_mps`)
+- [ ] Quantum hardware backend via logosq-hardware-integrator
+- [ ] Comprehensive test suite (>90% coverage)
+
+### v2.0 (2027)
+- [ ] PEPS/MERA tensor network support
+- [ ] Quantum memory backend (trapped ions, superconducting)
+- [ ] Cross-database entanglement routing
+- [ ] Quantum consensus for Byzantine fault tolerance
+
 ## License
 
 MIT OR Apache-2.0

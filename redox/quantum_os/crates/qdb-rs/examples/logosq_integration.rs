@@ -1,7 +1,14 @@
 //! LogosQ Integration Examples
 //!
 //! Demonstrates the LogosQ ↔ qft-rs ↔ qdb-rs data flow for VQE workflows.
-//! Run with: cargo run --example logosq_integration --features logosq
+//! Run with: cargo run --example logosq_integration
+//!
+//! This example shows:
+//! 1. VQE result storage with full metadata
+//! 2. Potential energy surface scans
+//! 3. Fidelity verification on retrieval
+//! 4. MPS bridge pattern (conceptual)
+//! 5. Batch experiment storage
 
 use qdb_rs::prelude::*;
 use qdb_rs::storage::MemoryBackend;
@@ -165,6 +172,48 @@ fn main() -> Result<()> {
 
     println!("\n   Total quantum states in database: {}", 
         db.keys()?.iter().filter(|k| k.to_string().starts_with("vqe:") || k.to_string().starts_with("pes:")).count());
+
+    // =========================================================================
+    // 6. Fidelity Verification on Retrieval
+    // =========================================================================
+    println!("\n6. Fidelity Verification on Retrieval");
+
+    // Store a known state
+    let original = bell_state()?;
+    db.put_quantum("fidelity_test", original.clone())?;
+
+    // Retrieve and verify fidelity
+    if let Some(loaded) = db.get_quantum("fidelity_test")? {
+        let fidelity = original.fidelity(&loaded)?;
+        println!("   Original qubits: {}", original.num_qubits());
+        println!("   Loaded qubits: {}", loaded.num_qubits());
+        println!("   Fidelity: {:.15}", fidelity);
+        
+        // Verify fidelity is within acceptable bounds
+        let fidelity_threshold = 1.0 - 1e-10;
+        if fidelity >= fidelity_threshold {
+            println!("   ✓ Fidelity verification PASSED (>= {})", fidelity_threshold);
+        } else {
+            println!("   ✗ Fidelity verification FAILED");
+            println!("     Expected: >= {}", fidelity_threshold);
+            println!("     Actual: {}", fidelity);
+        }
+    }
+
+    // =========================================================================
+    // 7. Compression Analysis
+    // =========================================================================
+    println!("\n7. Storage Compression Analysis");
+
+    for qubits in [4, 8, 12, 16] {
+        let state = ghz_state(qubits)?;
+        let dense_size = state.dimension() * 16; // 16 bytes per Complex64
+        let qft_bytes = state.to_bytes()?.len();
+        let compression_ratio = dense_size as f64 / qft_bytes as f64;
+
+        println!("   {} qubits: dense={} bytes, qft={} bytes, ratio={:.2}x",
+            qubits, dense_size, qft_bytes, compression_ratio);
+    }
 
     println!("\n=== LogosQ Integration Complete ===");
     Ok(())
