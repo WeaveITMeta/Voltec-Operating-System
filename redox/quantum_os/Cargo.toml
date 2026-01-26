@@ -20,6 +20,7 @@ members = [
     "crates/qft-wasm",
     "crates/qft-rs",
     "crates/qdb-rs",
+    "crates/qos-shell",
 ]
 
 # =============================================================================

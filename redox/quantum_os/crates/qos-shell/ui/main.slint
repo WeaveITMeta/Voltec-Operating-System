@@ -1,0 +1,427 @@
+// =============================================================================
+// Quantum OS Shell - Main UI
+// =============================================================================
+// Slint-based desktop shell for Quantum OS
+// Integrates with QDB filesystem and Eustress 3D viewport
+// =============================================================================
+
+import { Button, VerticalBox, HorizontalBox, ListView, StandardListView,
+         LineEdit, ScrollView, GridBox, Spinner, ProgressIndicator,
+         TabWidget, GroupBox, ComboBox, CheckBox, Slider } from "std-widgets.slint";
+
+// =============================================================================
+// Color Palette - Quantum OS Theme
+// =============================================================================
+
+global QosTheme {
+    // Primary colors
+    out property <color> background: #0a0a12;
+    out property <color> surface: #12121a;
+    out property <color> surface-elevated: #1a1a24;
+    out property <color> primary: #6366f1;
+    out property <color> primary-hover: #818cf8;
+    out property <color> secondary: #22d3ee;
+    out property <color> accent: #a855f7;
+    
+    // Text colors
+    out property <color> text-primary: #f8fafc;
+    out property <color> text-secondary: #94a3b8;
+    out property <color> text-muted: #64748b;
+    
+    // Status colors
+    out property <color> success: #22c55e;
+    out property <color> warning: #f59e0b;
+    out property <color> error: #ef4444;
+    out property <color> quantum: #8b5cf6;
+    
+    // Sizing
+    out property <length> spacing: 8px;
+    out property <length> radius: 8px;
+    out property <length> sidebar-width: 240px;
+}
+
+// =============================================================================
+// File Entry Model
+// =============================================================================
+
+export struct FileEntry {
+    name: string,
+    path: string,
+    is_directory: bool,
+    is_quantum: bool,
+    size: string,
+    modified: string,
+    icon: string,
+}
+
+// =============================================================================
+// Sidebar Component
+// =============================================================================
+
+component Sidebar inherits Rectangle {
+    in property <[string]> favorites: ["Home", "Documents", "Quantum States", "3D Scenes", "Downloads"];
+    in property <int> selected-index: 0;
+    callback favorite-selected(int);
+    
+    background: QosTheme.surface;
+    width: QosTheme.sidebar-width;
+    
+    VerticalBox {
+        padding: QosTheme.spacing;
+        spacing: QosTheme.spacing;
+        
+        // Logo
+        HorizontalBox {
+            alignment: center;
+            padding-bottom: 16px;
+            
+            Text {
+                text: "⚛ Quantum OS";
+                font-size: 18px;
+                font-weight: 700;
+                color: QosTheme.text-primary;
+            }
+        }
+        
+        // Favorites
+        Text {
+            text: "Favorites";
+            font-size: 12px;
+            color: QosTheme.text-muted;
+            font-weight: 600;
+        }
+        
+        for fav[idx] in favorites: Rectangle {
+            height: 36px;
+            border-radius: QosTheme.radius;
+            background: idx == selected-index ? QosTheme.primary : transparent;
+            
+            HorizontalBox {
+                padding-left: 12px;
+                alignment: start;
+                
+                Text {
+                    text: fav;
+                    color: idx == selected-index ? QosTheme.text-primary : QosTheme.text-secondary;
+                    vertical-alignment: center;
+                }
+            }
+            
+            TouchArea {
+                clicked => { favorite-selected(idx); }
+            }
+        }
+        
+        // Spacer
+        Rectangle { vertical-stretch: 1; }
+        
+        // Storage indicator
+        GroupBox {
+            title: "Storage";
+            
+            VerticalBox {
+                spacing: 4px;
+                
+                HorizontalBox {
+                    Text { text: "QDB"; color: QosTheme.text-secondary; font-size: 12px; }
+                    Rectangle { horizontal-stretch: 1; }
+                    Text { text: "42.3 GB / 100 GB"; color: QosTheme.text-muted; font-size: 12px; }
+                }
+                
+                Rectangle {
+                    height: 6px;
+                    border-radius: 3px;
+                    background: QosTheme.surface-elevated;
+                    
+                    Rectangle {
+                        width: 42%;
+                        height: 100%;
+                        border-radius: 3px;
+                        background: QosTheme.primary;
+                    }
+                }
+            }
+        }
+    }
+}
+
+// =============================================================================
+// File Browser Component
+// =============================================================================
+
+component FileBrowser inherits Rectangle {
+    in property <[FileEntry]> files;
+    in property <string> current-path: "/home/user";
+    callback file-selected(FileEntry);
+    callback file-opened(FileEntry);
+    callback path-changed(string);
+    
+    background: QosTheme.background;
+    
+    VerticalBox {
+        padding: QosTheme.spacing;
+        spacing: QosTheme.spacing;
+        
+        // Path bar
+        HorizontalBox {
+            spacing: QosTheme.spacing;
+            height: 40px;
+            
+            Button {
+                text: "←";
+                clicked => { path-changed(".."); }
+            }
+            
+            Button {
+                text: "→";
+            }
+            
+            Button {
+                text: "↑";
+                clicked => { path-changed(".."); }
+            }
+            
+            LineEdit {
+                text: current-path;
+                horizontal-stretch: 1;
+            }
+            
+            Button {
+                text: "🔍";
+            }
+        }
+        
+        // File list
+        ScrollView {
+            vertical-stretch: 1;
+            
+            VerticalBox {
+                spacing: 2px;
+                
+                for file in files: Rectangle {
+                    height: 48px;
+                    border-radius: QosTheme.radius;
+                    background: touch.has-hover ? QosTheme.surface-elevated : transparent;
+                    
+                    HorizontalBox {
+                        padding: QosTheme.spacing;
+                        spacing: 12px;
+                        
+                        // Icon
+                        Rectangle {
+                            width: 32px;
+                            height: 32px;
+                            border-radius: 4px;
+                            background: file.is-quantum ? QosTheme.quantum : 
+                                       file.is-directory ? QosTheme.primary : QosTheme.surface-elevated;
+                            
+                            Text {
+                                text: file.is-quantum ? "⚛" : file.is-directory ? "📁" : "📄";
+                                font-size: 16px;
+                                horizontal-alignment: center;
+                                vertical-alignment: center;
+                            }
+                        }
+                        
+                        // Name and details
+                        VerticalBox {
+                            horizontal-stretch: 1;
+                            spacing: 2px;
+                            
+                            Text {
+                                text: file.name;
+                                color: QosTheme.text-primary;
+                                font-size: 14px;
+                            }
+                            
+                            Text {
+                                text: file.is-quantum ? "Quantum State • " + file.size : file.size;
+                                color: file.is-quantum ? QosTheme.quantum : QosTheme.text-muted;
+                                font-size: 12px;
+                            }
+                        }
+                        
+                        // Modified date
+                        Text {
+                            text: file.modified;
+                            color: QosTheme.text-muted;
+                            font-size: 12px;
+                            vertical-alignment: center;
+                        }
+                    }
+                    
+                    touch := TouchArea {
+                        clicked => { file-selected(file); }
+                        double-clicked => { file-opened(file); }
+                    }
+                }
+            }
+        }
+        
+        // Status bar
+        HorizontalBox {
+            height: 24px;
+            
+            Text {
+                text: files.length + " items";
+                color: QosTheme.text-muted;
+                font-size: 12px;
+            }
+            
+            Rectangle { horizontal-stretch: 1; }
+            
+            Text {
+                text: "QDB Connected";
+                color: QosTheme.success;
+                font-size: 12px;
+            }
+        }
+    }
+}
+
+// =============================================================================
+// Quantum State Preview Component
+// =============================================================================
+
+component QuantumPreview inherits Rectangle {
+    in property <string> state-name: "No state selected";
+    in property <int> num-qubits: 0;
+    in property <float> fidelity: 0.0;
+    in property <bool> has-state: false;
+    callback open-in-eustress();
+    
+    background: QosTheme.surface;
+    border-radius: QosTheme.radius;
+    
+    VerticalBox {
+        padding: 16px;
+        spacing: 12px;
+        
+        Text {
+            text: "Quantum State Preview";
+            font-size: 14px;
+            font-weight: 600;
+            color: QosTheme.text-primary;
+        }
+        
+        if has-state: VerticalBox {
+            spacing: 8px;
+            
+            // State visualization placeholder
+            Rectangle {
+                height: 120px;
+                border-radius: QosTheme.radius;
+                background: QosTheme.surface-elevated;
+                
+                Text {
+                    text: "⚛ " + state-name;
+                    color: QosTheme.quantum;
+                    font-size: 24px;
+                    horizontal-alignment: center;
+                    vertical-alignment: center;
+                }
+            }
+            
+            // Stats
+            GridBox {
+                spacing: 8px;
+                
+                Row {
+                    Text { text: "Qubits:"; color: QosTheme.text-secondary; }
+                    Text { text: num-qubits; color: QosTheme.text-primary; }
+                }
+                Row {
+                    Text { text: "Fidelity:"; color: QosTheme.text-secondary; }
+                    Text { text: round(fidelity * 100) + "%"; color: QosTheme.success; }
+                }
+            }
+            
+            Button {
+                text: "Open in Eustress 3D";
+                clicked => { open-in-eustress(); }
+            }
+        }
+        
+        if !has-state: Rectangle {
+            vertical-stretch: 1;
+            
+            Text {
+                text: "Select a .qft file to preview";
+                color: QosTheme.text-muted;
+                horizontal-alignment: center;
+                vertical-alignment: center;
+            }
+        }
+    }
+}
+
+// =============================================================================
+// Main Application Window
+// =============================================================================
+
+export component MainWindow inherits Window {
+    title: "Quantum OS Shell";
+    background: QosTheme.background;
+    min-width: 1024px;
+    min-height: 768px;
+    
+    // Properties
+    in-out property <[FileEntry]> files: [
+        { name: "Documents", path: "/home/user/Documents", is_directory: true, is_quantum: false, size: "12 items", modified: "Today", icon: "📁" },
+        { name: "bell_state.qft", path: "/home/user/bell_state.qft", is_directory: false, is_quantum: true, size: "2 qubits • 1.2 KB", modified: "Yesterday", icon: "⚛" },
+        { name: "ghz_state.qft", path: "/home/user/ghz_state.qft", is_directory: false, is_quantum: true, size: "5 qubits • 4.8 KB", modified: "Jan 24", icon: "⚛" },
+        { name: "vqe_h2_ground.qft", path: "/home/user/vqe_h2_ground.qft", is_directory: false, is_quantum: true, size: "4 qubits • 3.2 KB", modified: "Jan 23", icon: "⚛" },
+        { name: "scene.eustress", path: "/home/user/scene.eustress", is_directory: false, is_quantum: false, size: "2.4 MB", modified: "Jan 22", icon: "🎬" },
+        { name: "notes.txt", path: "/home/user/notes.txt", is_directory: false, is_quantum: false, size: "1.2 KB", modified: "Jan 20", icon: "📄" },
+    ];
+    
+    in-out property <string> current-path: "/home/user";
+    in-out property <FileEntry> selected-file;
+    in-out property <bool> has-selection: false;
+    
+    // Callbacks
+    callback open-file(FileEntry);
+    callback launch-eustress(string);
+    
+    HorizontalBox {
+        // Sidebar
+        Sidebar {
+            favorite-selected(idx) => {
+                // Handle favorite selection
+            }
+        }
+        
+        // Main content
+        VerticalBox {
+            horizontal-stretch: 1;
+            
+            FileBrowser {
+                files: files;
+                current-path: current-path;
+                vertical-stretch: 1;
+                
+                file-selected(file) => {
+                    selected-file = file;
+                    has-selection = true;
+                }
+                
+                file-opened(file) => {
+                    open-file(file);
+                }
+            }
+        }
+        
+        // Right panel - Preview
+        QuantumPreview {
+            width: 280px;
+            state-name: has-selection && selected-file.is-quantum ? selected-file.name : "No state";
+            num-qubits: has-selection && selected-file.is-quantum ? 4 : 0;
+            fidelity: 0.9999;
+            has-state: has-selection && selected-file.is-quantum;
+            
+            open-in-eustress => {
+                launch-eustress(selected-file.path);
+            }
+        }
+    }
+}
