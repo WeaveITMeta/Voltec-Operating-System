@@ -26,6 +26,7 @@ pub mod qft_format;
 pub mod qft_security;
 pub mod state_backend;
 pub mod svd;
+pub mod qft_converter;
 
 #[cfg(feature = "logosq_compat")]
 pub mod logosq_compat;
@@ -57,6 +58,7 @@ pub mod prelude {
     pub use crate::qft_format::*;
     pub use crate::state_backend::*;
     pub use crate::svd::*;
+    pub use crate::qft_converter::*;
 
     #[cfg(feature = "logosq_compat")]
     pub use crate::logosq_compat::*;
