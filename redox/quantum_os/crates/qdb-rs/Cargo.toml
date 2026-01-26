@@ -1,0 +1,40 @@
+[package]
+name = "qdb-rs"
+version = "0.1.0"
+edition = "2021"
+authors = ["MACROHARD Quantum OS Team"]
+description = "Quantum Database - Hybrid quantum-classical data management using QFT format"
+license = "MIT OR Apache-2.0"
+repository = "https://github.com/WeaveITMeta/Quantum-Operating-System"
+keywords = ["quantum", "database", "qft", "tensor-network", "mps"]
+categories = ["database", "science", "data-structures"]
+
+[dependencies]
+qft = { package = "qft-rs", path = "../qft-rs" }
+num-complex = "0.4"
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+thiserror = "1.0"
+blake3 = "1.5"
+parking_lot = "0.12"
+dashmap = "5.5"
+rayon = "1.8"
+tracing = "0.1"
+
+[dependencies.tokio]
+version = "1.35"
+features = ["fs", "io-util", "sync", "rt-multi-thread"]
+optional = true
+
+[features]
+default = []
+async = ["tokio", "qft/async"]
+full = ["async"]
+
+[dev-dependencies]
+tempfile = "3.9"
+criterion = "0.5"
+
+[[bench]]
+name = "qdb_bench"
+harness = false
