@@ -52,6 +52,27 @@ make qemu
 | SSH (QEMU forward) | 2222 |
 | HTTP (if enabled) | 8080 |
 
+## EustressEngine Submodule
+
+```bash
+# Update submodule to latest
+git submodule update --remote --merge
+
+# Re-apply Redox workspace config
+cd quantum_os/external
+.\build-eustress.ps1 setup
+```
+
+## Quantum OS (QDB Examples)
+
+```bash
+cd quantum_os
+cargo run --example basic_usage -p qdb-rs
+cargo run --example quantum_transactions -p qdb-rs
+cargo run --example grover_search -p qdb-rs
+cargo run --example logosq_integration -p qdb-rs
+```
+
 ## Documentation
 
 - [MACROHARD.md](MACROHARD.md) - Project overview
@@ -61,3 +82,4 @@ make qemu
 - [docs/DRIVERS.md](docs/DRIVERS.md) - Driver development
 - [docs/SECURITY.md](docs/SECURITY.md) - Security model
 - [docs/HYPERVISOR.md](docs/HYPERVISOR.md) - Hypervisor design
+- [quantum_os/crates/qdb-rs/Start.md](quantum_os/crates/qdb-rs/Start.md) - QDB quick start
