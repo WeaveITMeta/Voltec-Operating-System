@@ -1,4 +1,4 @@
-module github.com/WeaveITMeta/Quantum-Operating-System/qft-go
+module github.com/WeaveITMeta/Quantum-Operating-System/redox/quantum_os/crates/qft-go
 
 go 1.21
 

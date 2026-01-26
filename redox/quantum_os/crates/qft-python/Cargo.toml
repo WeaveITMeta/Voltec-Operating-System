@@ -33,20 +33,11 @@ crate-type = ["cdylib"]
 # Dependencies
 # =============================================================================
 [dependencies]
-# Core quantum runtime
-quantum_runtime = { path = "../quantum_runtime", features = ["qft_format", "qft_golay"] }
-
 # Python bindings
 pyo3 = { version = "0.22", features = ["extension-module"] }
 
 # NumPy interop
 numpy = "0.22"
-
-# Error handling
-thiserror = "2"
-
-# Serialization
-serde_json = "1.0"
 
 [dev-dependencies]
 tempfile = "3"

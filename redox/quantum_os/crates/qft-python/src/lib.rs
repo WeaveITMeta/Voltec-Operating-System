@@ -11,9 +11,8 @@
 use numpy::{IntoPyArray, PyArray1, PyReadonlyArray1};
 use pyo3::exceptions::{PyIOError, PyRuntimeError, PyValueError};
 use pyo3::prelude::*;
-use pyo3::types::{PyDict, PyList};
+use pyo3::types::PyDict;
 use std::collections::HashMap;
-use std::path::Path;
 
 // =============================================================================
 // Section 1: Error Types
@@ -182,19 +181,19 @@ impl QftFile {
             interleaved.push(*r);
             interleaved.push(*i);
         }
-        interleaved.into_pyarray(py)
+        interleaved.into_pyarray_bound(py)
     }
 
     /// Get the real parts of amplitudes.
     #[getter]
     fn amplitudes_real<'py>(&self, py: Python<'py>) -> Bound<'py, PyArray1<f64>> {
-        self.amplitudes_real.clone().into_pyarray(py)
+        self.amplitudes_real.clone().into_pyarray_bound(py)
     }
 
     /// Get the imaginary parts of amplitudes.
     #[getter]
     fn amplitudes_imag<'py>(&self, py: Python<'py>) -> Bound<'py, PyArray1<f64>> {
-        self.amplitudes_imag.clone().into_pyarray(py)
+        self.amplitudes_imag.clone().into_pyarray_bound(py)
     }
 
     /// Set amplitudes from separate real and imaginary arrays.
@@ -404,7 +403,7 @@ impl QftFile {
 
     /// Get all metadata as a dictionary.
     fn metadata_dict<'py>(&self, py: Python<'py>) -> PyResult<Bound<'py, PyDict>> {
-        let dict = PyDict::new(py);
+        let dict = PyDict::new_bound(py);
         for (k, v) in &self.metadata {
             dict.set_item(k, v)?;
         }
@@ -432,7 +431,7 @@ impl QftFile {
     /// Serialize to bytes.
     fn to_bytes<'py>(&self, py: Python<'py>) -> PyResult<Bound<'py, pyo3::types::PyBytes>> {
         let data = self.serialize()?;
-        Ok(pyo3::types::PyBytes::new(py, &data))
+        Ok(pyo3::types::PyBytes::new_bound(py, &data))
     }
 
     fn __repr__(&self) -> String {
@@ -712,8 +711,8 @@ fn version() -> &'static str {
 // =============================================================================
 
 /// Encoding strategies for file conversion.
-#[pyclass(name = "Encoding")]
-#[derive(Clone, Copy)]
+#[pyclass(name = "Encoding", eq, eq_int)]
+#[derive(Clone, Copy, PartialEq, Eq)]
 enum Encoding {
     Amplitude = 0,
     BasisState = 1,
@@ -885,16 +884,16 @@ fn from_qiskit(py: Python<'_>, statevector: &Bound<'_, PyAny>) -> PyResult<QftFi
 #[pyfunction]
 fn to_qiskit(py: Python<'_>, qft_file: &QftFile) -> PyResult<PyObject> {
     // Import Qiskit
-    let qiskit = py.import("qiskit.quantum_info")?;
+    let qiskit = py.import_bound("qiskit.quantum_info")?;
     let statevector_class = qiskit.getattr("Statevector")?;
     
     // Create complex array
-    let numpy = py.import("numpy")?;
-    let dim = qft_file.dimension();
+    let numpy = py.import_bound("numpy")?;
+    let _dim = qft_file.dimension();
     
     // Build complex array from real and imag parts
-    let real_arr = qft_file.amplitudes_real.clone().into_pyarray(py);
-    let imag_arr = qft_file.amplitudes_imag.clone().into_pyarray(py);
+    let real_arr = qft_file.amplitudes_real.clone().into_pyarray_bound(py);
+    let imag_arr = qft_file.amplitudes_imag.clone().into_pyarray_bound(py);
     
     let complex_arr = numpy.call_method1(
         "array",

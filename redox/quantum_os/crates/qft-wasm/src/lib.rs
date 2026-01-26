@@ -686,8 +686,9 @@ pub fn create_bell_state() -> Result<QftFile, JsValue> {
 pub fn create_ghz_state(num_qubits: usize) -> Result<QftFile, JsValue> {
     let mut file = QftFile::new(num_qubits)?;
     let sqrt2_inv = 1.0 / 2.0_f64.sqrt();
+    let last_idx = file.dimension() - 1;
     file.amplitudes_real[0] = sqrt2_inv;
-    file.amplitudes_real[file.dimension() - 1] = sqrt2_inv;
+    file.amplitudes_real[last_idx] = sqrt2_inv;
     Ok(file)
 }
 

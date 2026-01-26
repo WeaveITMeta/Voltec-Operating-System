@@ -101,9 +101,4 @@ features = ["openblas-system"]
 windows-sys = { version = "0.52", features = ["Win32_Networking_WinSock"] }
 
 [dev-dependencies]
-criterion = "0.5"
 proptest = "1.4"
-
-[[bench]]
-name = "gate_benchmarks"
-harness = false
