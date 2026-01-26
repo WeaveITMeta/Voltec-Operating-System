@@ -25,9 +25,16 @@ pub mod qft_benchmark;
 pub mod qft_format;
 pub mod qft_security;
 pub mod state_backend;
+pub mod svd;
 
 #[cfg(feature = "logosq_compat")]
 pub mod logosq_compat;
+
+#[cfg(feature = "openqasm_export")]
+pub mod openqasm_export;
+
+#[cfg(feature = "dm_mps")]
+pub mod dm_mps;
 
 pub mod async_runtime;
 pub mod streaming;
@@ -49,9 +56,16 @@ pub mod prelude {
     pub use crate::measurement::*;
     pub use crate::qft_format::*;
     pub use crate::state_backend::*;
+    pub use crate::svd::*;
 
     #[cfg(feature = "logosq_compat")]
     pub use crate::logosq_compat::*;
+
+    #[cfg(feature = "openqasm_export")]
+    pub use crate::openqasm_export::*;
+
+    #[cfg(feature = "dm_mps")]
+    pub use crate::dm_mps::*;
 
     pub use crate::async_runtime::*;
     pub use crate::streaming::*;

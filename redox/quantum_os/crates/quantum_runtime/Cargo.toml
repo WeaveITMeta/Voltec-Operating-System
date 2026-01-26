@@ -43,8 +43,11 @@ simd_accel = []
 gpu_backend = ["wgpu"]
 qft_format = ["bitflags"]
 qft_golay = ["qft_format"]
-full = ["all_backends", "logosq_compat", "async_runtime", "webtransport", "qft_format"]
+full = ["all_backends", "logosq_compat", "async_runtime", "webtransport", "qft_format", "production_svd"]
 webtransport = ["quinn", "rustls", "rcgen"]
+production_svd = ["ndarray-linalg"]
+dm_mps = ["mps_backend"]
+openqasm_export = []
 
 [dependencies.wgpu]
 version = "0.19"
@@ -88,6 +91,11 @@ optional = true
 [dependencies.rcgen]
 version = "0.12"
 optional = true
+
+[dependencies.ndarray-linalg]
+version = "0.16"
+optional = true
+features = ["openblas-system"]
 
 [target.'cfg(windows)'.dependencies]
 windows-sys = { version = "0.52", features = ["Win32_Networking_WinSock"] }
