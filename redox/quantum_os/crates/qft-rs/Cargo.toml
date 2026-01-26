@@ -1,0 +1,70 @@
+# =============================================================================
+# qft-rs - Native Rust SDK for Quantum File Type (.qft)
+# =============================================================================
+# Table of Contents:
+#   1. Package Configuration - Crate metadata
+#   2. Dependencies - Core quantum runtime re-exports
+#   3. Features - Optional functionality toggles
+# =============================================================================
+
+[package]
+name = "qft-rs"
+version = "1.0.0"
+edition = "2024"
+authors = ["MACROHARD Quantum OS Team"]
+license = "MIT OR Apache-2.0"
+description = "Production-grade native Rust SDK for Quantum File Type (.qft) format"
+repository = "https://github.com/WeaveITMeta/Quantum-Operating-System"
+documentation = "https://docs.rs/qft-rs"
+keywords = ["quantum", "qft", "mps", "tensor-network", "quantum-computing"]
+categories = ["science", "encoding", "data-structures"]
+readme = "README.md"
+rust-version = "1.83"
+
+[lib]
+name = "qft"
+path = "src/lib.rs"
+
+# =============================================================================
+# Dependencies
+# =============================================================================
+[dependencies]
+# Core quantum runtime
+quantum_runtime = { path = "../quantum_runtime", features = ["qft_format", "qft_golay"] }
+
+# Numerics
+num-complex = "0.4"
+ndarray = "0.16"
+
+# Error handling
+thiserror = "2"
+
+# Serialization
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+
+# Async support (optional)
+tokio = { version = "1", features = ["fs", "io-util"], optional = true }
+
+[dev-dependencies]
+tempfile = "3"
+criterion = "0.5"
+
+[[bench]]
+name = "qft_benchmarks"
+harness = false
+
+# =============================================================================
+# Features
+# =============================================================================
+[features]
+default = []
+async = ["tokio"]
+full = ["async"]
+
+# =============================================================================
+# Documentation
+# =============================================================================
+[package.metadata.docs.rs]
+all-features = true
+rustdoc-args = ["--cfg", "docsrs"]
