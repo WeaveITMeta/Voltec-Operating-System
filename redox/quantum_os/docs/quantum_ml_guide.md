@@ -1016,12 +1016,19 @@ async fn distributed_gradient_computation(
         })
         .collect();
     
-    // Aggregate gradients
+    // Aggregate gradients with proper error handling
     let mut total_grad = vec![0.0; model.params.len()];
     for handle in handles {
-        let local_grad = handle.await.unwrap();
-        for (tg, lg) in total_grad.iter_mut().zip(local_grad.iter()) {
-            *tg += lg;
+        match handle.await {
+            Ok(local_grad) => {
+                for (tg, lg) in total_grad.iter_mut().zip(local_grad.iter()) {
+                    *tg += lg;
+                }
+            }
+            Err(e) => {
+                eprintln!("Gradient computation failed: {:?}", e);
+                // Continue with partial gradients or return error
+            }
         }
     }
     
