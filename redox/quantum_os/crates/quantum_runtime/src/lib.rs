@@ -13,11 +13,17 @@
 //          full-word snake_case naming conventions.
 // =============================================================================
 
+pub mod bond_optimization;
 pub mod circuit_program;
 pub mod error;
 pub mod execution;
 pub mod gate_operations;
+pub mod golay;
+pub mod golay_quantum;
 pub mod measurement;
+pub mod qft_benchmark;
+pub mod qft_format;
+pub mod qft_security;
 pub mod state_backend;
 
 #[cfg(feature = "logosq_compat")]
@@ -33,11 +39,15 @@ pub mod gpu_backend;
 pub mod webtransport;
 
 pub mod prelude {
+    pub use crate::bond_optimization::*;
     pub use crate::circuit_program::*;
     pub use crate::error::*;
     pub use crate::execution::*;
     pub use crate::gate_operations::*;
+    pub use crate::golay::*;
+    pub use crate::golay_quantum::*;
     pub use crate::measurement::*;
+    pub use crate::qft_format::*;
     pub use crate::state_backend::*;
 
     #[cfg(feature = "logosq_compat")]

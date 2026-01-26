@@ -33,7 +33,7 @@ crossbeam-channel.workspace = true
 kernel_services = { path = "../kernel_services" }
 
 [features]
-default = ["dense_backend"]
+default = ["dense_backend", "qft_format"]
 dense_backend = []
 mps_backend = []
 all_backends = ["dense_backend", "mps_backend"]
@@ -41,7 +41,9 @@ logosq_compat = []
 async_runtime = ["tokio/full"]
 simd_accel = []
 gpu_backend = ["wgpu"]
-full = ["all_backends", "logosq_compat", "async_runtime", "webtransport"]
+qft_format = ["bitflags"]
+qft_golay = ["qft_format"]
+full = ["all_backends", "logosq_compat", "async_runtime", "webtransport", "qft_format"]
 webtransport = ["quinn", "rustls", "rcgen"]
 
 [dependencies.wgpu]
@@ -70,6 +72,10 @@ optional = true
 [dependencies.bytemuck]
 version = "1.14"
 features = ["derive"]
+
+[dependencies.bitflags]
+version = "2.4"
+optional = true
 
 [dependencies.quinn]
 version = "0.11"
