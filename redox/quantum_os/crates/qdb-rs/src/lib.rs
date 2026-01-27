@@ -46,7 +46,11 @@ pub mod vector;
 pub use entry::{Entry, EntryType, Key, Value};
 pub use error::{QdbError, Result};
 pub use storage::{Backend, DiskBackend, MemoryBackend, QDB, QdbConfig, RadiationMode};
-pub use vector::{DistanceMetric, Embedding, SearchResult, VectorEntry, VectorIndex, VectorStore, VectorStoreConfig};
+pub use vector::{
+    cosine_distance_fast, euclidean_distance_squared,
+    DistanceMetric, Embedding, SearchResult, VectorEntry, VectorIndex, 
+    VectorIndexConfig, VectorStore, VectorStoreConfig, VectorStoreStats,
+};
 
 /// Prelude for convenient imports
 pub mod prelude {
