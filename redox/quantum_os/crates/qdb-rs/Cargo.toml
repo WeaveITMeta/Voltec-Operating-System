@@ -1,43 +1,89 @@
 [package]
 name = "qdb-rs"
-version = "0.1.0"
+version = "0.1.1"
 edition = "2021"
-authors = ["MACROHARD Quantum OS Team"]
-description = "Quantum Database - Hybrid quantum-classical data management using QFT format"
+rust-version = "1.75"
+authors = ["MACROHARD Quantum OS Team <quantum@macrohard.dev>"]
+description = "Quantum Database with vector store, MPS compression, Grover search, and fault-tolerant storage"
 license = "MIT OR Apache-2.0"
 repository = "https://github.com/WeaveITMeta/Quantum-Operating-System"
-keywords = ["quantum", "database", "qft", "tensor-network", "mps"]
-categories = ["database", "science", "data-structures"]
+keywords = ["quantum", "database", "vector-store", "embeddings", "tensor-network"]
+categories = ["database", "science", "data-structures", "algorithms"]
 readme = "README.md"
 documentation = "https://docs.rs/qdb-rs"
 homepage = "https://github.com/WeaveITMeta/Quantum-Operating-System"
+exclude = ["benches/", "tests/", ".github/"]
+
+# =============================================================================
+# Core Dependencies
+# =============================================================================
 
 [dependencies]
+# Quantum File Type format for state serialization
 qft = { package = "qft-rs", version = "1.0" }
+
+# Complex number support
 num-complex = "0.4"
+
+# Serialization
 serde = { version = "1.0", features = ["derive"] }
 serde_json = "1.0"
-thiserror = "1.0"
+
+# Error handling
+thiserror = "2.0"
+
+# Cryptographic hashing (BLAKE3)
 blake3 = "1.5"
+
+# Concurrent data structures
 parking_lot = "0.12"
 dashmap = "5.5"
-rayon = "1.8"
+
+# Parallel processing
+rayon = "1.10"
+
+# Logging/tracing
 tracing = "0.1"
 
+# =============================================================================
+# Optional Dependencies
+# =============================================================================
+
 [dependencies.tokio]
-version = "1.35"
+version = "1.40"
 features = ["fs", "io-util", "sync", "rt-multi-thread"]
 optional = true
 
+# =============================================================================
+# Features
+# =============================================================================
+
 [features]
 default = []
+# Async I/O with Tokio
 async = ["tokio", "qft/async"]
+# All features enabled
 full = ["async"]
 
+# =============================================================================
+# Development Dependencies
+# =============================================================================
+
 [dev-dependencies]
-tempfile = "3.9"
-criterion = "0.5"
+tempfile = "3.14"
+criterion = { version = "0.5", features = ["html_reports"] }
 
 [[bench]]
 name = "qdb_bench"
 harness = false
+
+# =============================================================================
+# Package Metadata
+# =============================================================================
+
+[package.metadata.docs.rs]
+all-features = true
+rustdoc-args = ["--cfg", "docsrs"]
+
+[badges]
+maintenance = { status = "actively-developed" }

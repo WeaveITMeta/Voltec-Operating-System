@@ -3,20 +3,60 @@
 [![Crates.io](https://img.shields.io/crates/v/qdb-rs.svg)](https://crates.io/crates/qdb-rs)
 [![Documentation](https://docs.rs/qdb-rs/badge.svg)](https://docs.rs/qdb-rs)
 [![License](https://img.shields.io/badge/license-MIT%2FApache--2.0-blue.svg)](LICENSE)
+[![Rust](https://img.shields.io/badge/rust-1.75+-orange.svg)](https://www.rust-lang.org)
 
-A hybrid quantum-classical database leveraging the QFT format for polynomial storage complexity and fault-tolerant error correction. Built on [qft-rs](https://crates.io/crates/qft-rs) and designed for integration with the [LogosQ](https://crates.io/crates/logosq) quantum simulation ecosystem.
+**A hybrid quantum-classical database** combining traditional key-value storage with quantum state persistence, vector embeddings, and Grover-inspired O(√N) search.
 
-## Features
+## Why QDB?
 
-- **Quantum State Storage**: Store and retrieve quantum states using the `.qft` format
-- **MPS Compression**: O(n χ²) storage complexity via Matrix Product State decomposition
-- **Golay Error Correction**: [23,12,7] classical Golay codes for fault-tolerant persistence
-- **Grover-Inspired Search**: O(√N) search complexity for unstructured queries
-- **ACID Transactions**: Quantum-aware transaction semantics with entanglement groups
-- **Multiple Backends**: Memory, disk, and extensible backend abstraction
-- **Radiation Hardening**: SEU mitigation modes for space applications
-- **Post-Quantum Security**: ML-KEM signing support via QFT format
-- **Vector Store**: HNSW-based embedding storage with similarity search (cosine, euclidean, dot product)
+| Problem | QDB Solution |
+|---------|--------------|
+| Storing quantum states is expensive | **MPS compression**: O(n χ²) instead of O(2ⁿ) |
+| Classical DBs can't handle quantum data | **Native QFT format** with fidelity preservation |
+| Vector search lacks quantum awareness | **Fidelity distance metric** for quantum embeddings |
+| Space applications need fault tolerance | **Golay [23,12,7] error correction** + radiation hardening |
+| Searching unstructured data is slow | **Grover-inspired search**: O(√N) complexity |
+
+## Key Features
+
+### 🔮 Quantum State Storage
+Store and retrieve quantum states with guaranteed fidelity using the `.qft` format:
+```rust
+let bell = bell_state()?;
+db.put_quantum("entangled_pair", bell)?;
+let loaded = db.get_quantum("entangled_pair")?;
+assert!(loaded.unwrap().fidelity(&bell)? > 0.9999);
+```
+
+### 📊 Vector Store (Quantum-Optimized)
+HNSW-based embedding storage with **6 distance metrics** including quantum fidelity:
+```rust
+let mut store = VectorStore::with_dim(384);
+store.put(VectorEntry::new("doc1", embedding).with_namespace("physics"))?;
+let results = store.search(&query, 10);  // O(log N) ANN search
+```
+
+### ⚡ Grover-Inspired Search
+Quadratic speedup for unstructured queries:
+```rust
+let search = GroverSearch::new(&db, oracle)?;
+let results = search.search()?;  // O(√N) vs O(N) classical
+```
+
+### 🛡️ Fault-Tolerant Storage
+- **Golay [23,12,7]** error correction (3-bit correction, 7-bit detection)
+- **Radiation hardening** modes for space applications
+- **BLAKE3** checksums for integrity verification
+
+## All Features
+
+- **Quantum State Storage**: Native `.qft` format with MPS compression
+- **Vector Store**: HNSW index, 6 distance metrics, namespace isolation
+- **Grover Search**: O(√N) quantum-inspired search algorithm
+- **ACID Transactions**: Entanglement-aware transaction groups
+- **Multiple Backends**: Memory, disk, extensible trait
+- **Error Correction**: Golay codes + radiation hardening
+- **Concurrent Access**: Lock-free reads via DashMap
 
 ## Installation
 
