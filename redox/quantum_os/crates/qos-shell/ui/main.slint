@@ -1,7 +1,7 @@
 // =============================================================================
-// Quantum OS Shell - Main UI
+// V-OS Shell - Main UI
 // =============================================================================
-// Slint-based desktop shell for Quantum OS
+// Slint-based desktop shell for V-OS
 // Integrates with QDB filesystem and Eustress 3D viewport
 // =============================================================================
 
@@ -10,7 +10,7 @@ import { Button, VerticalBox, HorizontalBox, ListView, StandardListView,
          TabWidget, GroupBox, ComboBox, CheckBox, Slider } from "std-widgets.slint";
 
 // =============================================================================
-// Color Palette - Quantum OS Theme
+// Color Palette - V-OS Theme
 // =============================================================================
 
 global QosTheme {
@@ -76,7 +76,7 @@ component Sidebar inherits Rectangle {
             padding-bottom: 16px;
             
             Text {
-                text: "⚛ Quantum OS";
+                text: "⚛ V-OS";
                 font-size: 18px;
                 font-weight: 700;
                 color: QosTheme.text-primary;
@@ -360,7 +360,7 @@ component QuantumPreview inherits Rectangle {
 // =============================================================================
 
 export component MainWindow inherits Window {
-    title: "Quantum OS Shell";
+    title: "V-OS Shell";
     background: QosTheme.background;
     min-width: 1024px;
     min-height: 768px;

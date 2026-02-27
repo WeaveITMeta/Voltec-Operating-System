@@ -1,5 +1,5 @@
 // =============================================================================
-// MACROHARD Quantum OS - Golay Error Correction
+// V-OS - Golay Error Correction
 // =============================================================================
 // Table of Contents:
 //   1. Constants and Generator Polynomial

@@ -1,5 +1,5 @@
 // =============================================================================
-// MACROHARD Quantum OS - Measurement Module
+// V-OS - Measurement Module
 // =============================================================================
 // Table of Contents:
 //   1. MeasurementEvent - Single measurement result

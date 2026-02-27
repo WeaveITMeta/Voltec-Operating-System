@@ -1,5 +1,5 @@
 // =============================================================================
-// MACROHARD Quantum OS - Quantum File Type (.qft) Format
+// V-OS - Quantum File Type (.qft) Format
 // =============================================================================
 // Table of Contents:
 //   1. Constants and Magic Numbers
@@ -810,11 +810,17 @@ fn svd_truncate(
     
     // Truncate to actual rank
     let u_truncated: Vec<Complex64> = (0..rows)
-        .flat_map(|i| (0..actual_rank).map(move |j| u[i * target_rank + j]))
+        .flat_map(|i| {
+            let u_ref = &u;
+            (0..actual_rank).map(move |j| u_ref[i * target_rank + j])
+        })
         .collect();
     let s_truncated: Vec<f64> = s[..actual_rank].to_vec();
     let vt_truncated: Vec<Complex64> = (0..actual_rank)
-        .flat_map(|i| (0..cols).map(move |j| vt[i * cols + j]))
+        .flat_map(|i| {
+            let vt_ref = &vt;
+            (0..cols).map(move |j| vt_ref[i * cols + j])
+        })
         .collect();
     
     Ok((u_truncated, s_truncated, vt_truncated, actual_rank))

@@ -1,5 +1,5 @@
 // =============================================================================
-// MACROHARD Quantum OS - QFT Security and Integrity
+// V-OS - QFT Security and Integrity
 // =============================================================================
 // Table of Contents:
 //   1. CRC-64 Checksum - Data integrity verification

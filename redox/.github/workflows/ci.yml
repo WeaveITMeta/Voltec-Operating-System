@@ -1,7 +1,7 @@
-# MACROHARD OS CI/CD Pipeline
+# V-OS CI/CD Pipeline
 # Enhanced GitHub Actions workflow for building and testing
 
-name: MACROHARD CI
+name: V-OS CI
 
 on:
   push:
@@ -13,12 +13,12 @@ on:
       config:
         description: 'Build configuration'
         required: false
-        default: 'macrohard-desktop'
+        default: 'v-os-desktop'
         type: choice
         options:
-          - macrohard-desktop
-          - macrohard-server
-          - macrohard-minimal
+          - v-os-desktop
+          - v-os-server
+          - v-os-minimal
           - desktop
           - server
           - minimal
@@ -38,7 +38,7 @@ jobs:
       fail-fast: false
       matrix:
         arch: [x86_64]
-        config: [macrohard-desktop, macrohard-server, macrohard-minimal]
+        config: [v-os-desktop, v-os-server, v-os-minimal]
         include:
           - arch: x86_64
             target: x86_64-unknown-redox
@@ -104,7 +104,7 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-build-${{ matrix.arch }}-${{ matrix.config }}-
 
-      - name: Build MACROHARD OS
+      - name: Build V-OS
         run: |
           make all ARCH=${{ matrix.arch }} CONFIG_NAME=${{ matrix.config }} PODMAN_BUILD=0
         timeout-minutes: 120
@@ -112,7 +112,7 @@ jobs:
       - name: Upload build artifacts
         uses: actions/upload-artifact@v4
         with:
-          name: macrohard-${{ matrix.arch }}-${{ matrix.config }}
+          name: v-os-${{ matrix.arch }}-${{ matrix.config }}
           path: |
             build/${{ matrix.arch }}/${{ matrix.config }}/harddrive.img
           retention-days: 7
@@ -149,7 +149,7 @@ jobs:
     strategy:
       matrix:
         arch: [x86_64]
-        config: [macrohard-minimal]
+        config: [v-os-minimal]
 
     steps:
       - name: Checkout repository
@@ -163,7 +163,7 @@ jobs:
       - name: Download build artifact
         uses: actions/download-artifact@v4
         with:
-          name: macrohard-${{ matrix.arch }}-${{ matrix.config }}
+          name: v-os-${{ matrix.arch }}-${{ matrix.config }}
           path: build/${{ matrix.arch }}/${{ matrix.config }}/
 
       - name: Run QEMU boot test
@@ -183,7 +183,7 @@ jobs:
           sleep 60
           
           # Check for successful boot indicators
-          if grep -q "macrohard\|redox\|login:" qemu-output.log; then
+          if grep -q "v-os\|redox\|login:" qemu-output.log; then
             echo "Boot test PASSED"
             kill $QEMU_PID 2>/dev/null || true
             exit 0
@@ -257,7 +257,7 @@ jobs:
       - name: Create release archives
         run: |
           cd artifacts
-          for dir in macrohard-*/; do
+          for dir in v-os-*/; do
             name=$(basename "$dir")
             tar -czvf "${name}.tar.gz" "$dir"
           done

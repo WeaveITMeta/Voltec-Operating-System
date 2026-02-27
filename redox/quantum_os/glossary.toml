@@ -1,5 +1,5 @@
 # =============================================================================
-# MACROHARD Quantum OS - Naming Glossary
+# V-OS - Naming Glossary
 # =============================================================================
 # Table of Contents:
 #   1. Quantum Runtime Layer Mappings
@@ -14,13 +14,13 @@
 
 [metadata]
 version = "1.0.0"
-description = "Quantum OS Naming Glossary - Full words snake_case for Rust"
+description = "V-OS Naming Glossary - Full words snake_case for Rust"
 last_updated = "2026-01-15"
 
 # =============================================================================
 # 1. Quantum Runtime Layer Mappings
 # =============================================================================
-# LogosQ original -> MACROHARD Quantum OS snake_case naming
+# LogosQ original -> V-OS snake_case naming
 # =============================================================================
 
 [quantum_runtime]
@@ -75,7 +75,7 @@ last_updated = "2026-01-15"
 # =============================================================================
 # 2. Kernel Services Layer Mappings
 # =============================================================================
-# Redox OS concepts -> MACROHARD Quantum OS mappings
+# Redox OS concepts -> V-OS mappings
 # =============================================================================
 
 [kernel_services]

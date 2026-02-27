@@ -1,5 +1,5 @@
 # =============================================================================
-# MACROHARD Quantum OS - Kernel Services Crate
+# V-OS - Kernel Services Crate
 # =============================================================================
 # Table of Contents:
 #   1. Package Configuration
@@ -12,7 +12,7 @@ version.workspace = true
 authors.workspace = true
 edition.workspace = true
 license.workspace = true
-description = "Microkernel services: IPC, tasks, capabilities for Quantum OS"
+description = "Microkernel services: IPC, tasks, capabilities for V-OS"
 
 [dependencies]
 # Workspace dependencies

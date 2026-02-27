@@ -1,11 +1,11 @@
-# MACROHARD OS Build Configuration
+# V-OS Build Configuration
 # Copy this file to .config and customize as needed
 
 # Target architecture (x86_64, aarch64, riscv64gc)
 ARCH=x86_64
 
-# Build configuration (macrohard-desktop, macrohard-server, macrohard-minimal)
-CONFIG_NAME=macrohard-desktop
+# Build configuration (v-os-desktop, v-os-server, v-os-minimal)
+CONFIG_NAME=v-os-desktop
 
 # Use Podman for containerized builds (recommended)
 PODMAN_BUILD=1

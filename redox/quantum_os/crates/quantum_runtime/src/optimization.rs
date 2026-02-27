@@ -1,5 +1,5 @@
 // =============================================================================
-// MACROHARD Quantum OS - Performance Optimization Module
+// V-OS - Performance Optimization Module
 // =============================================================================
 // Table of Contents:
 //   1. SIMD-Accelerated State Vector Operations

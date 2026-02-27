@@ -1,4 +1,4 @@
-# MACROHARD Hypervisor Design Document
+# V-OS Hypervisor Design Document
 
 ## Table of Contents
 
@@ -17,7 +17,7 @@
 
 ## Overview
 
-The MACROHARD Hypervisor is a Type-1.5 hypervisor integrated into the OS, providing:
+The V-OS Hypervisor is a Type-1.5 hypervisor integrated into the OS, providing:
 
 - **Native Performance**: Hardware-assisted virtualization (VT-x/AMD-V)
 - **Seamless Integration**: Windows/Linux guests appear as native apps
@@ -630,19 +630,19 @@ pub fn validate_guest_access(
 
 ```bash
 # Create a VM
-macrohard-hypervisor create --name "Windows 11" --memory 4096 --cpus 2 --disk win11.qcow2
+v-os-hypervisor create --name "Windows 11" --memory 4096 --cpus 2 --disk win11.qcow2
 
 # Start a VM
-macrohard-hypervisor start "Windows 11"
+v-os-hypervisor start "Windows 11"
 
 # List VMs
-macrohard-hypervisor list
+v-os-hypervisor list
 
 # Stop a VM
-macrohard-hypervisor stop "Windows 11"
+v-os-hypervisor stop "Windows 11"
 
 # Enable seamless mode
-macrohard-hypervisor seamless --enable "Windows 11"
+v-os-hypervisor seamless --enable "Windows 11"
 ```
 
 ---

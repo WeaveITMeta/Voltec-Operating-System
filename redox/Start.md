@@ -1,4 +1,4 @@
-# MACROHARD OS - Quick Start Guide
+# V-OS OS - Quick Start Guide
 
 ## Prerequisites
 
@@ -9,14 +9,14 @@
 ## Build Commands
 
 ```bash
-# Build MACROHARD Desktop
-make all CONFIG_NAME=macrohard-desktop
+# Build V-OS Desktop
+make all CONFIG_NAME=v-os-desktop
 
-# Build MACROHARD Server
-make all CONFIG_NAME=macrohard-server
+# Build V-OS Server
+make all CONFIG_NAME=v-os-server
 
-# Build MACROHARD Minimal
-make all CONFIG_NAME=macrohard-minimal
+# Build V-OS Minimal
+make all CONFIG_NAME=v-os-minimal
 
 # Run in QEMU
 make qemu
@@ -26,23 +26,23 @@ make qemu
 
 ```powershell
 # Setup WSL2 environment
-.\scripts\macrohard-dev.ps1 setup
+.\scripts\v-os-dev.ps1 setup
 
 # Build
-.\scripts\macrohard-dev.ps1 all
+.\scripts\v-os-dev.ps1 all
 
 # Run in QEMU
-.\scripts\macrohard-dev.ps1 qemu
+.\scripts\v-os-dev.ps1 qemu
 ```
 
 ## Linux/macOS Development
 
 ```bash
 # Build
-./scripts/macrohard-build.sh all
+./scripts/v-os-build.sh all
 
 # Run in QEMU
-./scripts/macrohard-build.sh qemu
+./scripts/v-os-build.sh qemu
 ```
 
 ## Ports
@@ -63,7 +63,7 @@ cd quantum_os/external
 .\build-eustress.ps1 setup
 ```
 
-## Quantum OS (QDB Examples)
+## V-OS (QDB Examples)
 
 ```bash
 cd quantum_os
@@ -75,7 +75,7 @@ cargo run --example logosq_integration -p qdb-rs
 
 ## Documentation
 
-- [MACROHARD.md](MACROHARD.md) - Project overview
+- [V-OS.md](V-OS.md) - Project overview
 - [ROADMAP.md](ROADMAP.md) - Development roadmap
 - [ARCHITECTURE.md](ARCHITECTURE.md) - System architecture
 - [docs/GETTING_STARTED.md](docs/GETTING_STARTED.md) - Detailed guide

@@ -1,4 +1,4 @@
-# MACROHARD Desktop Configuration
+# V-OS Desktop Configuration
 # Full-featured desktop environment with hypervisor support
 
 include = ["desktop.toml"]
@@ -8,40 +8,40 @@ include = ["desktop.toml"]
 # Filesystem size in MiB - larger for hypervisor and Windows guest support
 filesystem_size = 2048
 
-# Package settings - MACROHARD additions
+# Package settings - V-OS additions
 [packages]
 # Core desktop packages inherited from desktop.toml
 
 # Hypervisor support (Phase 4)
-# macrohard-hypervisor = {}
+# v-os-hypervisor = {}
 
 # AI-assisted development tools (Phase 8)
-# macrohard-ai-tools = {}
+# v-os-ai-tools = {}
 
 # Security enhancements (Phase 7)
-# macrohard-security = {}
+# v-os-security = {}
 
 # Windows integration (Phase 5)
-# macrohard-windows-bridge = {}
+# v-os-windows-bridge = {}
 
 [[files]]
 path = "/etc/hostname"
-data = "macrohard"
+data = "v-os"
 
 [[files]]
 path = "/usr/lib/os-release"
 data = """
-PRETTY_NAME="MACROHARD OS 0.1.0-alpha"
-NAME="MACROHARD OS"
+PRETTY_NAME="V-OS 0.1.0-alpha"
+NAME="V-OS"
 VERSION_ID="0.1.0"
 VERSION="0.1.0-alpha (Forked from Redox OS 0.9.0)"
-ID="macrohard-os"
+ID="v-os-os"
 ID_LIKE="redox-os"
 
-HOME_URL="https://macrohard-os.org/"
-DOCUMENTATION_URL="https://macrohard-os.org/docs/"
-SUPPORT_URL="https://macrohard-os.org/community/"
-BUG_REPORT_URL="https://github.com/macrohard-os/macrohard/issues"
+HOME_URL="https://v-os-os.org/"
+DOCUMENTATION_URL="https://v-os-os.org/docs/"
+SUPPORT_URL="https://v-os-os.org/community/"
+BUG_REPORT_URL="https://github.com/v-os-os/v-os/issues"
 """
 
 [[files]]
@@ -55,14 +55,14 @@ unset BROWSER
 unset VT
 """
 
-# MACROHARD-specific init scripts
+# V-OS-specific init scripts
 [[files]]
-path = "/usr/lib/init.d/50_macrohard"
+path = "/usr/lib/init.d/50_v-os"
 data = """
-# MACROHARD OS initialization
+# V-OS initialization
 # Hypervisor service (when available)
-# nowait macrohard-hypervisor
+# nowait v-os-hypervisor
 
 # Security daemon (when available)
-# nowait macrohard-security-daemon
+# nowait v-os-security-daemon
 """

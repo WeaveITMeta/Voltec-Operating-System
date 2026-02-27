@@ -1,12 +1,12 @@
 // =============================================================================
-// MACROHARD Quantum OS - Message Passing Channels
+// V-OS - Message Passing Channels
 // =============================================================================
 // Table of Contents:
 //   1. MessageChannel - Bidirectional IPC channel
 //   2. MeasurementStreamChannel - Streaming channel for measurements
 //   3. ChannelRegistry - Global channel management
 // =============================================================================
-// Purpose: Implements message-passing IPC for the Quantum OS. Channels are
+// Purpose: Implements message-passing IPC for the V-OS. Channels are
 //          capability-protected and support both request-response and
 //          streaming patterns for quantum measurement results.
 // =============================================================================

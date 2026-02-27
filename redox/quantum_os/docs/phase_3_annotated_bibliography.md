@@ -1,6 +1,6 @@
 # Phase 3: Quantum Hardware Abstraction — Annotated Bibliography
 
-> **Purpose**: Implementation-oriented references for Phase 3 of MACROHARD Quantum OS.  
+> **Purpose**: Implementation-oriented references for Phase 3 of V-OS.  
 > Each entry includes: (a) what it proves/defines, (b) why it matters to the roadmap, (c) Rust architecture implications.
 
 ---
@@ -44,7 +44,7 @@
 ### OpenQASM 3
 - **Citation**: arXiv:2104.14722 — "OpenQASM 3: A broader and deeper quantum assembly language"
 - **What it is**: Machine-independent quantum assembly language extended to cover real-time classical control flow, timing, and near-hardware specificity (including calibration/characterization use cases).
-- **Why it matters**: Validates "Quantum OS" runtime view: quantum programs aren't only static circuits; they include timing + measurement-driven control.
+- **Why it matters**: Validates "V-OS" runtime view: quantum programs aren't only static circuits; they include timing + measurement-driven control.
 - **Rust implication**: IR needs explicit support for:
   - Measurement events
   - Conditional branching (restricted form)
@@ -304,4 +304,4 @@
 
 ---
 
-*Document generated for MACROHARD Quantum OS Phase 3 implementation planning.*
+*Document generated for V-OS Phase 3 implementation planning.*

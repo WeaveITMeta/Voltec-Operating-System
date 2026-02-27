@@ -1,12 +1,12 @@
 // =============================================================================
-// MACROHARD Quantum OS - Kernel Services
+// V-OS - Kernel Services
 // =============================================================================
 // Table of Contents:
 //   1. Module Declarations
 //   2. Re-exports
 //   3. Prelude Module
 // =============================================================================
-// Purpose: Microkernel-style services for the Quantum OS. Provides capability-
+// Purpose: Microkernel-style services for the V-OS. Provides capability-
 //          based access control, message passing IPC, task scheduling, and
 //          resource handle management extended for quantum device access.
 // =============================================================================

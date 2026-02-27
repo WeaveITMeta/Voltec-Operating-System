@@ -469,7 +469,7 @@ MIT OR Apache-2.0
 1. Grover, L. K. (1996). "A fast quantum mechanical algorithm for database search." *Proceedings of STOC*.
 2. Peruzzo, A., et al. (2014). "A variational eigenvalue solver on a photonic quantum processor." *Nature Communications*, 5, 4213.
 3. LogosQ Paper (2025). arXiv:2512.23183v2. "LogosQ: Compile-Time Safe Quantum Simulation in Rust."
-4. QFT Specification v1.2.0 - MACROHARD Quantum OS
+4. QFT Specification v1.2.0 - V-OS
 
 ## Contributing
 

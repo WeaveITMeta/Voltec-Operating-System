@@ -1,5 +1,5 @@
 // =============================================================================
-// MACROHARD Quantum OS - Quantum File Type (.qft) Demo
+// V-OS - Quantum File Type (.qft) Demo
 // =============================================================================
 // Table of Contents:
 //   1. Basic Storage and Retrieval
@@ -29,7 +29,7 @@ use std::path::Path;
 
 fn main() {
     println!("╔══════════════════════════════════════════════════════════════════╗");
-    println!("║     MACROHARD Quantum OS - Quantum File Type (.qft) Demo         ║");
+    println!("║     V-OS - Quantum File Type (.qft) Demo         ║");
     println!("╚══════════════════════════════════════════════════════════════════╝");
     println!();
 

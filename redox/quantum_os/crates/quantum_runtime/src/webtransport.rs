@@ -1,5 +1,5 @@
 // =============================================================================
-// MACROHARD Quantum OS - WebTransport/UDP Streaming Infrastructure
+// V-OS - WebTransport/UDP Streaming Infrastructure
 // =============================================================================
 // Table of Contents:
 //   1. WebTransport Protocol Types

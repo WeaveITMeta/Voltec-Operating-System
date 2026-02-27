@@ -1,5 +1,5 @@
 // =============================================================================
-// MACROHARD Quantum OS - Unified Error Types
+// V-OS - Unified Error Types
 // =============================================================================
 // Table of Contents:
 //   1. QuantumRuntimeError - Main error enum

@@ -1,7 +1,7 @@
-# MACROHARD Desktop Configuration for x86_64
+# V-OS Desktop Configuration for x86_64
 # Full-featured desktop environment with hypervisor support
 
-include = ["../macrohard-desktop.toml"]
+include = ["../v-os-desktop.toml"]
 
 # x86_64 specific settings
 [general]

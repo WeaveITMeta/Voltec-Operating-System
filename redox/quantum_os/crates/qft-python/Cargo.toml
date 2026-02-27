@@ -12,7 +12,7 @@
 name = "qft-python"
 version = "1.0.0"
 edition = "2021"
-authors = ["MACROHARD Quantum OS Team"]
+authors = ["V-OS Team"]
 license = "MIT OR Apache-2.0"
 description = "Production-grade Python bindings for Quantum File Type (.qft) format"
 repository = "https://github.com/WeaveITMeta/Quantum-Operating-System"

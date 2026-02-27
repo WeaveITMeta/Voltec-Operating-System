@@ -12,11 +12,18 @@ use crate::log_to_pty;
 use crate::recipe::BuildKind;
 use crate::recipe::CookRecipe;
 use crate::{blake3, recipe::SourceRecipe};
+use std::cell::RefCell;
+use std::collections::HashSet;
 use std::fs;
 use std::fs::File;
 use std::io::Read;
 use std::path::{Path, PathBuf};
 use std::process::Command;
+
+thread_local! {
+    /// Tracks visited SameAs recipe paths to detect cycles.
+    static SAME_AS_VISITED: RefCell<HashSet<PathBuf>> = RefCell::new(HashSet::new());
+}
 
 pub(crate) fn get_blake3(path: &PathBuf, show_progress: bool) -> Result<String, String> {
     if show_progress {
@@ -59,6 +66,7 @@ pub fn fetch_offline(recipe: &CookRecipe, logger: &PtyOut) -> Result<PathBuf, St
             let recipe = fetch_resolve_canon(recipe_dir, &same_as, recipe.name.is_host())?;
             // recursively fetch
             fetch_offline(&recipe, logger)?;
+            fetch_clear_same_as_visited();
             fetch_make_symlink(&source_dir, &same_as)?;
             fetch_get_source_info(&recipe)?.source_identifier
         }
@@ -135,6 +143,7 @@ pub fn fetch(recipe: &CookRecipe, logger: &PtyOut) -> Result<PathBuf, String> {
             let recipe = fetch_resolve_canon(recipe_dir, &same_as, recipe.name.is_host())?;
             // recursively fetch
             fetch(&recipe, logger)?;
+            fetch_clear_same_as_visited();
             fetch_make_symlink(&source_dir, &same_as)?;
             fetch_get_source_info(&recipe)?.source_identifier
         }
@@ -434,21 +443,32 @@ pub(crate) fn fetch_resolve_canon(
     is_host: bool,
 ) -> Result<CookRecipe, String> {
     let canon_dir = Path::new(recipe_dir).join(same_as);
-    if canon_dir
-        .to_str()
-        .unwrap()
-        .chars()
-        .filter(|c| *c == '/')
-        .count()
-        > 50
-    {
-        return Err(format!("Infinite loop detected"));
+    let resolved = canon_dir.canonicalize().unwrap_or_else(|_| canon_dir.clone());
+
+    let is_cycle = SAME_AS_VISITED.with(|visited| {
+        !visited.borrow_mut().insert(resolved.clone())
+    });
+    if is_cycle {
+        // Clean up before returning so future calls start fresh
+        SAME_AS_VISITED.with(|visited| visited.borrow_mut().clear());
+        return Err(format!(
+            "SameAs cycle detected: '{}' was already visited",
+            resolved.display()
+        ));
     }
+
     if !canon_dir.exists() {
-        return Err(format!("'{dir}' is not exists.", dir = canon_dir.display()));
+        SAME_AS_VISITED.with(|visited| visited.borrow_mut().clear());
+        return Err(format!("'{dir}' does not exist.", dir = canon_dir.display()));
     }
-    CookRecipe::from_path(canon_dir.as_path(), true, is_host)
-        .map_err(|e| format!("Unable to load {dir}: {e:?}", dir = canon_dir.display()))
+    let result = CookRecipe::from_path(canon_dir.as_path(), true, is_host)
+        .map_err(|e| format!("Unable to load {dir}: {e:?}", dir = canon_dir.display()));
+    result
+}
+
+/// Clear the SameAs visited set after a top-level fetch completes.
+pub(crate) fn fetch_clear_same_as_visited() {
+    SAME_AS_VISITED.with(|visited| visited.borrow_mut().clear());
 }
 
 pub(crate) fn fetch_extract_tar(

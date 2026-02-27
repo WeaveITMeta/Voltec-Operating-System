@@ -1,7 +1,7 @@
-# MACROHARD Quantum OS
+# V-OS
 
 <p align="center">
-  <strong>🔷 MACROHARD Quantum OS 🔷</strong><br/>
+  <strong>🔷 V-OS 🔷</strong><br/>
   <em>A Microkernel + Quantum Runtime Operating System</em>
 </p>
 
@@ -9,7 +9,7 @@
 
 ## Overview
 
-**MACROHARD Quantum OS** is an experimental quantum operating system architecture that combines:
+**V-OS** is an experimental quantum operating system architecture that combines:
 
 - **Redox-inspired Microkernel** - Capability-based security, message-passing IPC, userspace services
 - **LogosQ Integration** - High-performance, type-safe quantum computing library in Rust
@@ -20,7 +20,7 @@
 
 ```
 ┌─────────────────────────────────────────────────────────────────────────────┐
-│                        MACROHARD Quantum OS Stack                           │
+│                        V-OS Stack                           │
 ├─────────────────────────────────────────────────────────────────────────────┤
 │                         UX Visualization Layer                              │
 │   ┌──────────────────┐  ┌──────────────────┐  ┌──────────────────────────┐  │
@@ -62,7 +62,7 @@ This project uses **full-word snake_case** naming to avoid confusion between cla
 
 ### Key Renames
 
-| LogosQ Original | Quantum OS Naming |
+| LogosQ Original | V-OS Naming |
 |-----------------|-------------------|
 | `Circuit` | `quantum_circuit_structure` |
 | `Operation` | `gate_application_instance` |
@@ -966,5 +966,5 @@ MIT License - Same as Redox OS and LogosQ.
 ---
 
 <p align="center">
-  <strong>MACROHARD Quantum OS</strong> — Classical Microkernel + Quantum Runtime
+  <strong>V-OS</strong> — Classical Microkernel + Quantum Runtime
 </p>

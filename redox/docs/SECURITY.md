@@ -1,4 +1,4 @@
-# MACROHARD OS Security Model
+# V-OS Security Model
 
 ## Table of Contents
 
@@ -18,7 +18,7 @@
 
 ## Overview
 
-MACROHARD OS implements a defense-in-depth security model with multiple layers of protection:
+V-OS implements a defense-in-depth security model with multiple layers of protection:
 
 ```
 ┌─────────────────────────────────────────────────────────────────────────────┐
@@ -72,7 +72,7 @@ Small kernel (~30K LoC), userspace drivers, minimal syscall interface.
 
 ### Rust's Guarantees
 
-MACROHARD OS is written in Rust, providing compile-time guarantees:
+V-OS is written in Rust, providing compile-time guarantees:
 
 | Vulnerability Class | Prevention Mechanism |
 |---------------------|---------------------|
@@ -86,7 +86,7 @@ MACROHARD OS is written in Rust, providing compile-time guarantees:
 ### Unsafe Code Policy
 
 ```rust
-/// Unsafe code guidelines for MACROHARD OS
+/// Unsafe code guidelines for V-OS
 /// 
 /// 1. Minimize unsafe blocks
 /// 2. Document safety invariants
@@ -703,19 +703,19 @@ impl SecureBoot {
 
 ```bash
 # Audit unsafe blocks in kernel
-macrohard-audit unsafe --path kernel/
+v-os-audit unsafe --path kernel/
 
 # Check for known vulnerabilities
-macrohard-audit cve --all
+v-os-audit cve --all
 
 # Fuzz syscall interface
-macrohard-fuzz syscall --duration 1h
+v-os-fuzz syscall --duration 1h
 
 # Verify capability usage
-macrohard-audit capabilities --process <pid>
+v-os-audit capabilities --process <pid>
 
 # Check driver isolation
-macrohard-audit drivers --verify-iommu
+v-os-audit drivers --verify-iommu
 ```
 
 ### Continuous Security

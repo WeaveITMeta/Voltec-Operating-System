@@ -1,5 +1,5 @@
 #!/bin/bash
-# MACROHARD OS Build Script
+# V-OS Build Script
 # Enhanced build automation with cross-compilation support
 
 set -euo pipefail
@@ -13,7 +13,7 @@ ROOT_DIR="$(dirname "$SCRIPT_DIR")"
 
 # Default values
 ARCH="${ARCH:-x86_64}"
-CONFIG="${CONFIG:-macrohard-desktop}"
+CONFIG="${CONFIG:-v-os-desktop}"
 JOBS="${JOBS:-$(nproc)}"
 PODMAN_BUILD="${PODMAN_BUILD:-1}"
 VERBOSE="${VERBOSE:-0}"
@@ -61,7 +61,7 @@ print_banner() {
     echo "║   ██║ ╚═╝ ██║██║  ██║╚██████╗██║  ██║╚██████╔╝██║  ██║██║  ██║  ║"
     echo "║   ╚═╝     ╚═╝╚═╝  ╚═╝ ╚═════╝╚═╝  ╚═╝ ╚═════╝ ╚═╝  ╚═╝╚═╝  ╚═╝  ║"
     echo "║                                                                  ║"
-    echo "║              MACROHARD OS Build System v0.1.0                    ║"
+    echo "║              V-OS Build System v0.1.0                    ║"
     echo "║                                                                  ║"
     echo "╚══════════════════════════════════════════════════════════════════╝"
     echo -e "${NC}"
@@ -82,7 +82,7 @@ print_usage() {
     echo ""
     echo "Options:"
     echo "  -a, --arch ARCH       Target architecture (x86_64, aarch64, riscv64gc)"
-    echo "  -c, --config CONFIG   Build configuration (macrohard-desktop, macrohard-server, macrohard-minimal)"
+    echo "  -c, --config CONFIG   Build configuration (v-os-desktop, v-os-server, v-os-minimal)"
     echo "  -j, --jobs N          Number of parallel jobs"
     echo "  -p, --podman          Use Podman for build (default)"
     echo "  -n, --native          Use native build (no Podman)"
@@ -90,8 +90,8 @@ print_usage() {
     echo "  -h, --help            Show this help message"
     echo ""
     echo "Examples:"
-    echo "  $0                           # Build macrohard-desktop for x86_64"
-    echo "  $0 -a aarch64 -c macrohard-server all"
+    echo "  $0                           # Build v-os-desktop for x86_64"
+    echo "  $0 -a aarch64 -c v-os-server all"
     echo "  $0 qemu                      # Build and run in QEMU"
     echo "  $0 -n kernel                 # Build kernel natively"
 }
@@ -150,7 +150,7 @@ setup_environment() {
 # =============================================================================
 
 cmd_all() {
-    log_step "Building MACROHARD OS ($ARCH, $CONFIG)..."
+    log_step "Building V-OS ($ARCH, $CONFIG)..."
     
     check_dependencies
     setup_environment
@@ -245,7 +245,7 @@ cmd_test() {
         QEMU_PID=$!
         sleep 30
         
-        if grep -q "macrohard\|redox\|login:" /tmp/qemu-test.log; then
+        if grep -q "v-os\|redox\|login:" /tmp/qemu-test.log; then
             log_success "Boot test PASSED"
         else
             log_warn "Boot test inconclusive"

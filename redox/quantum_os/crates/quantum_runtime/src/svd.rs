@@ -1,5 +1,5 @@
 // =============================================================================
-// MACROHARD Quantum OS - Singular Value Decomposition Module
+// V-OS - Singular Value Decomposition Module
 // =============================================================================
 // Table of Contents:
 //   1. SvdResult - Result structure for SVD operations

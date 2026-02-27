@@ -1,7 +1,7 @@
 # Quantum Machine Learning Implementation Guide
 
 **Version**: 1.0.0  
-**Authors**: MACROHARD Quantum OS Team  
+**Authors**: V-OS Team  
 **Date**: 2026-01-25  
 **Status**: Research & Development
 
@@ -1094,5 +1094,5 @@ async fn distributed_gradient_computation(
 
 ---
 
-*Document created for MACROHARD Quantum OS*  
+*Document created for V-OS*  
 *Part of the Quantum File Type ecosystem*

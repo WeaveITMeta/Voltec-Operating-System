@@ -1,5 +1,5 @@
 // =============================================================================
-// MACROHARD Quantum OS - Execution Engine
+// V-OS - Execution Engine
 // =============================================================================
 // Table of Contents:
 //   1. QuantumExecutionEngine - Main execution coordinator

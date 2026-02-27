@@ -2,7 +2,7 @@
 
 **Version**: 1.0  
 **Date**: January 26, 2026  
-**Authors**: MACROHARD Quantum OS Team
+**Authors**: V-OS Team
 
 ---
 
@@ -363,4 +363,4 @@ distributed_tx.entangle_across_nodes(vec![
 
 ---
 
-*Document created for MACROHARD Quantum OS - QDB v0.1*
+*Document created for V-OS - QDB v0.1*

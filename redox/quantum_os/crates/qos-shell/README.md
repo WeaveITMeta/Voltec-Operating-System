@@ -1,6 +1,6 @@
-# QOS-Shell - Quantum OS Desktop Shell
+# QOS-Shell - V-OS Desktop Shell
 
-A Slint-based desktop environment for Quantum OS with QDB filesystem integration and Eustress 3D support.
+A Slint-based desktop environment for V-OS with QDB filesystem integration and Eustress 3D support.
 
 ## Architecture
 
@@ -18,7 +18,7 @@ A Slint-based desktop environment for Quantum OS with QDB filesystem integration
 
 ## Features
 
-- **Slint UI** - Modern, declarative UI with Quantum OS theme
+- **Slint UI** - Modern, declarative UI with V-OS theme
 - **QDB Filesystem** - Browse quantum states and classical files
 - **Quantum Preview** - View `.qft` file properties inline
 - **Eustress Integration** - Launch 3D visualization via IPC

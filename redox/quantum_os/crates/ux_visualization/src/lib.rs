@@ -1,5 +1,5 @@
 // =============================================================================
-// MACROHARD Quantum OS - UX Visualization Layer
+// V-OS - UX Visualization Layer
 // =============================================================================
 // Table of Contents:
 //   1. VisualizationDataPacket - Data for rendering

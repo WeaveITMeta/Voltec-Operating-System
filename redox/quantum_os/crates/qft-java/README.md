@@ -8,7 +8,7 @@ Production-grade Java library for working with quantum states in the .qft format
 
 ```xml
 <dependency>
-    <groupId>dev.macrohard.qft</groupId>
+    <groupId>dev.v-os.qft</groupId>
     <artifactId>qft-java</artifactId>
     <version>1.0.0</version>
 </dependency>
@@ -17,13 +17,13 @@ Production-grade Java library for working with quantum states in the .qft format
 ### Gradle
 
 ```groovy
-implementation 'dev.macrohard.qft:qft-java:1.0.0'
+implementation 'dev.v-os.qft:qft-java:1.0.0'
 ```
 
 ## Quick Start
 
 ```java
-import dev.macrohard.qft.QftFile;
+import dev.v-os.qft.QftFile;
 
 public class Example {
     public static void main(String[] args) throws Exception {

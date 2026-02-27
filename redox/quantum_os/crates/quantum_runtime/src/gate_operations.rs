@@ -1,5 +1,5 @@
 // =============================================================================
-// MACROHARD Quantum OS - Gate Operations
+// V-OS - Gate Operations
 // =============================================================================
 // Table of Contents:
 //   1. QuantumGateInterface - Core trait for all gates

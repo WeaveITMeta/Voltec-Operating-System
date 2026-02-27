@@ -1,4 +1,4 @@
-# Direct Eustress-Quantum OS Integration Roadmap
+# Direct Eustress-V-OS Integration Roadmap
 
 ## Phase 1: Foundation
 

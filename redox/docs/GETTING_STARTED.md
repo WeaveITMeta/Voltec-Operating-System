@@ -1,4 +1,4 @@
-# Getting Started with MACROHARD OS
+# Getting Started with V-OS
 
 ## Table of Contents
 
@@ -54,7 +54,7 @@ rustup component add rust-src
 wsl --install
 
 # After restart, run the setup script
-.\scripts\macrohard-dev.ps1 setup
+.\scripts\v-os-dev.ps1 setup
 ```
 
 ### macOS Host
@@ -85,22 +85,22 @@ rustup component add rust-src
 ### Clone the Repository
 
 ```bash
-git clone https://github.com/macrohard-os/macrohard.git
-cd macrohard
+git clone https://github.com/v-os-os/v-os.git
+cd v-os
 git submodule update --init --recursive
 ```
 
 ### Build and Run
 
 ```bash
-# Build MACROHARD Desktop (default)
+# Build V-OS Desktop (default)
 make all
 
 # Run in QEMU
 make qemu
 ```
 
-That's it! You should see MACROHARD OS booting in a QEMU window.
+That's it! You should see V-OS booting in a QEMU window.
 
 ---
 
@@ -110,9 +110,9 @@ That's it! You should see MACROHARD OS booting in a QEMU window.
 
 | Configuration | Description | Command |
 |---------------|-------------|---------|
-| `macrohard-desktop` | Full desktop with GUI | `make all CONFIG_NAME=macrohard-desktop` |
-| `macrohard-server` | Headless server | `make all CONFIG_NAME=macrohard-server` |
-| `macrohard-minimal` | Minimal for testing | `make all CONFIG_NAME=macrohard-minimal` |
+| `v-os-desktop` | Full desktop with GUI | `make all CONFIG_NAME=v-os-desktop` |
+| `v-os-server` | Headless server | `make all CONFIG_NAME=v-os-server` |
+| `v-os-minimal` | Minimal for testing | `make all CONFIG_NAME=v-os-minimal` |
 | `desktop` | Original Redox desktop | `make all CONFIG_NAME=desktop` |
 
 ### Target Architectures
@@ -147,7 +147,7 @@ make all REPO_OFFLINE=1
 ```
 build/
 └── x86_64/
-    └── macrohard-desktop/
+    └── v-os-desktop/
         ├── harddrive.img      # Bootable disk image
         ├── redox-live.iso     # Live ISO (make live)
         ├── filesystem/        # Mounted filesystem
@@ -190,7 +190,7 @@ qemu-system-x86_64 \
     -machine q35 \
     -m 2048 \
     -smp 2 \
-    -drive file=build/x86_64/macrohard-desktop/harddrive.img,format=raw \
+    -drive file=build/x86_64/v-os-desktop/harddrive.img,format=raw \
     -serial mon:stdio \
     -device virtio-net-pci,netdev=net0 \
     -netdev user,id=net0,hostfwd=tcp::2222-:22
@@ -217,13 +217,13 @@ make gdb
 make live
 
 # Write to USB (replace /dev/sdX with your USB device)
-sudo dd if=build/x86_64/macrohard-desktop/redox-live.iso of=/dev/sdX bs=4M status=progress
+sudo dd if=build/x86_64/v-os-desktop/redox-live.iso of=/dev/sdX bs=4M status=progress
 sync
 ```
 
 ### UEFI Boot
 
-MACROHARD OS supports UEFI boot. Ensure your system is configured for UEFI mode.
+V-OS supports UEFI boot. Ensure your system is configured for UEFI mode.
 
 ### Dual Boot Setup
 
@@ -243,15 +243,15 @@ See [HARDWARE.md](../HARDWARE.md) for tested hardware.
 ### Project Structure
 
 ```
-macrohard/
+v-os/
 ├── config/              # Build configurations
-│   ├── macrohard-desktop.toml
-│   ├── macrohard-server.toml
-│   └── macrohard-minimal.toml
+│   ├── v-os-desktop.toml
+│   ├── v-os-server.toml
+│   └── v-os-minimal.toml
 ├── docs/                # Documentation
 ├── mk/                  # Makefile includes
 ├── recipes/             # Package recipes
-│   └── macrohard/       # MACROHARD-specific packages
+│   └── v-os/       # V-OS-specific packages
 ├── scripts/             # Build scripts
 └── src/                 # Cookbook source
 ```
@@ -274,7 +274,7 @@ template = "cargo"
 
 3. Add to configuration:
 ```toml
-# config/macrohard-desktop.toml
+# config/v-os-desktop.toml
 [packages]
 mypackage = {}
 ```
@@ -362,7 +362,7 @@ make all FSTOOLS_NO_MOUNT=1
 make image
 
 # Check image exists
-ls -la build/x86_64/macrohard-desktop/harddrive.img
+ls -la build/x86_64/v-os-desktop/harddrive.img
 ```
 
 ### "Out of disk space"
@@ -389,8 +389,8 @@ make all PODMAN_BUILD=1
 ### Getting Help
 
 - **Documentation**: [docs/](../docs/)
-- **Issues**: [GitHub Issues](https://github.com/macrohard-os/macrohard/issues)
-- **Chat**: [Matrix](https://matrix.to/#/#macrohard:matrix.org)
+- **Issues**: [GitHub Issues](https://github.com/v-os-os/v-os/issues)
+- **Chat**: [Matrix](https://matrix.to/#/#v-os:matrix.org)
 
 ---
 
@@ -401,3 +401,4 @@ make all PODMAN_BUILD=1
 - See [CONTRIBUTING.md](../CONTRIBUTING.md) to contribute
 - Explore [DRIVERS.md](DRIVERS.md) to write drivers
 - Review [SECURITY.md](SECURITY.md) for security model
+- Follow [VIRTUALBOX_GUIDE.md](VIRTUALBOX_GUIDE.md) to build and boot in VirtualBox from Windows

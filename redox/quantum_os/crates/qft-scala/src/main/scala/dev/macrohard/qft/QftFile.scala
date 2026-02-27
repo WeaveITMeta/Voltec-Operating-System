@@ -1,4 +1,4 @@
-package dev.macrohard.qft
+package dev.v-os.qft
 
 import java.io.{ByteArrayInputStream, ByteArrayOutputStream, DataInputStream, DataOutputStream}
 import java.nio.{ByteBuffer, ByteOrder}
@@ -67,7 +67,7 @@ class QftFormatException(message: String) extends Exception(message)
  *
  * ==Example Usage:==
  * {{{
- * import dev.macrohard.qft._
+ * import dev.v-os.qft._
  *
  * // Create a 4-qubit state
  * val state = QftFile(4)

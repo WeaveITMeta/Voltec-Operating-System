@@ -1,4 +1,4 @@
-# MACROHARD Minimal Configuration
+# V-OS Minimal Configuration
 # Bare-bones system for embedded/testing
 
 include = ["minimal.toml"]
@@ -10,19 +10,19 @@ filesystem_size = 256
 
 [[files]]
 path = "/etc/hostname"
-data = "macrohard-minimal"
+data = "v-os-minimal"
 
 [[files]]
 path = "/usr/lib/os-release"
 data = """
-PRETTY_NAME="MACROHARD Minimal 0.1.0-alpha"
-NAME="MACROHARD Minimal"
+PRETTY_NAME="V-OS Minimal 0.1.0-alpha"
+NAME="V-OS Minimal"
 VERSION_ID="0.1.0"
 VERSION="0.1.0-alpha (Forked from Redox OS 0.9.0)"
-ID="macrohard-os"
+ID="v-os-os"
 ID_LIKE="redox-os"
 VARIANT="Minimal"
 VARIANT_ID="minimal"
 
-HOME_URL="https://macrohard-os.org/"
+HOME_URL="https://v-os-os.org/"
 """

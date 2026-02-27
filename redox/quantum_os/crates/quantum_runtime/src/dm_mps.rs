@@ -1,5 +1,5 @@
 // =============================================================================
-// MACROHARD Quantum OS - Density Matrix MPS (DM-MPS) Module
+// V-OS - Density Matrix MPS (DM-MPS) Module
 // =============================================================================
 // Table of Contents:
 //   1. DensityMatrixMPS - Mixed state representation via MPS

@@ -1,5 +1,5 @@
 // =============================================================================
-// MACROHARD Quantum OS - Streaming Infrastructure
+// V-OS - Streaming Infrastructure
 // =============================================================================
 // Table of Contents:
 //   1. StreamingProtocol - Message format definitions

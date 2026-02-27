@@ -1,4 +1,4 @@
-# MACROHARD OS Development Script for Windows
+# V-OS Development Script for Windows
 # PowerShell build automation
 
 param(
@@ -11,7 +11,7 @@ param(
     [string]$Arch = "x86_64",
     
     [Alias("c")]
-    [string]$Config = "macrohard-desktop",
+    [string]$Config = "v-os-desktop",
     
     [Alias("j")]
     [int]$Jobs = [Environment]::ProcessorCount,
@@ -46,7 +46,7 @@ function Write-Banner {
 ║   ██║ ╚═╝ ██║██║  ██║╚██████╗██║  ██║╚██████╔╝██║  ██║██║  ██║  ║
 ║   ╚═╝     ╚═╝╚═╝  ╚═╝ ╚═════╝╚═╝  ╚═╝ ╚═════╝ ╚═╝  ╚═╝╚═╝  ╚═╝  ║
 ║                                                                  ║
-║              MACROHARD OS Build System v0.1.0                    ║
+║              V-OS Build System v0.1.0                    ║
 ║              Windows Development Environment                     ║
 ║                                                                  ║
 ╚══════════════════════════════════════════════════════════════════╝
@@ -86,7 +86,7 @@ function Write-Step {
 
 function Show-Usage {
     @"
-Usage: .\macrohard-dev.ps1 [COMMAND] [OPTIONS]
+Usage: .\v-os-dev.ps1 [COMMAND] [OPTIONS]
 
 Commands:
   all         Build complete OS image (default)
@@ -101,18 +101,18 @@ Commands:
 
 Options:
   -Arch, -a       Target architecture (x86_64, aarch64, riscv64gc)
-  -Config, -c     Build configuration (macrohard-desktop, macrohard-server, macrohard-minimal)
+  -Config, -c     Build configuration (v-os-desktop, v-os-server, v-os-minimal)
   -Jobs, -j       Number of parallel jobs
   -VerboseOutput, -v    Verbose output
   -ShowHelp, -h         Show this help message
 
 Examples:
-  .\macrohard-dev.ps1                           # Build macrohard-desktop for x86_64
-  .\macrohard-dev.ps1 -Arch aarch64 -Config macrohard-server all
-  .\macrohard-dev.ps1 setup                     # Set up WSL2 development environment
-  .\macrohard-dev.ps1 qemu                      # Build and run in QEMU
+  .\v-os-dev.ps1                           # Build v-os-desktop for x86_64
+  .\v-os-dev.ps1 -Arch aarch64 -Config v-os-server all
+  .\v-os-dev.ps1 setup                     # Set up WSL2 development environment
+  .\v-os-dev.ps1 qemu                      # Build and run in QEMU
 
-Note: Building MACROHARD OS requires WSL2 with a Linux distribution.
+Note: Building V-OS requires WSL2 with a Linux distribution.
       Use the 'setup' command to configure your environment.
 "@
 }
@@ -144,7 +144,7 @@ function Test-Dependencies {
     
     if ($missing.Count -gt 0) {
         Write-Error "Missing dependencies: $($missing -join ', ')"
-        Write-Info "Run '.\macrohard-dev.ps1 setup' to configure your environment."
+        Write-Info "Run '.\v-os-dev.ps1 setup' to configure your environment."
         exit 1
     }
     
@@ -156,7 +156,7 @@ function Test-Dependencies {
 # =============================================================================
 
 function Invoke-Setup {
-    Write-Step "Setting up MACROHARD development environment..."
+    Write-Step "Setting up V-OS development environment..."
     
     # Check for WSL2
     if (-not (Test-WSL)) {
@@ -216,7 +216,7 @@ echo "Setup complete!"
     $wslScript -replace "`r`n", "`n" | wsl bash
     
     Write-Success "Development environment setup complete!"
-    Write-Info "You can now build MACROHARD OS using: .\macrohard-dev.ps1 all"
+    Write-Info "You can now build V-OS using: .\v-os-dev.ps1 all"
 }
 
 function Invoke-Build {
@@ -224,7 +224,7 @@ function Invoke-Build {
     
     Test-Dependencies
     
-    Write-Step "Building MACROHARD OS ($Arch, $Config)..."
+    Write-Step "Building V-OS ($Arch, $Config)..."
     
     $startTime = Get-Date
     
@@ -247,7 +247,7 @@ function Invoke-Build {
 }
 
 function Invoke-QEMU {
-    Write-Step "Running MACROHARD OS in QEMU..."
+    Write-Step "Running V-OS in QEMU..."
     
     $imagePath = Join-Path $RootDir "build\$Arch\$Config\harddrive.img"
     

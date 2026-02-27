@@ -1,5 +1,5 @@
 // =============================================================================
-// MACROHARD Quantum OS - LogosQ Compatibility Layer
+// V-OS - LogosQ Compatibility Layer
 // =============================================================================
 // Table of Contents:
 //   1. Circuit Conversion (LogosQ Circuit ↔ QuantumCircuitStructure)
@@ -9,7 +9,7 @@
 //   5. Direct LogosQ API Access
 // =============================================================================
 // Purpose: Provides seamless bidirectional conversion between LogosQ types
-//          and Quantum OS types. Enables using LogosQ directly while
+//          and V-OS types. Enables using LogosQ directly while
 //          maintaining the full-word snake_case naming convention.
 // =============================================================================
 // Feature: This module is only compiled when `logosq_compat` feature is enabled.

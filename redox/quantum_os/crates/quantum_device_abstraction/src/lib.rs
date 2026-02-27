@@ -1,5 +1,5 @@
 // =============================================================================
-// MACROHARD Quantum OS - Quantum Device Abstraction
+// V-OS - Quantum Device Abstraction
 // =============================================================================
 // Table of Contents:
 //   1. QuantumDeviceInterface - Core device trait

@@ -37,10 +37,10 @@
 
     <developers>
         <developer>
-            <id>macrohard</id>
-            <name>MACROHARD Quantum OS Team</name>
-            <email>quantum@macrohard.dev</email>
-            <organization>MACROHARD</organization>
+            <id>v-os</id>
+            <name>V-OS Team</name>
+            <email>quantum@v-os.dev</email>
+            <organization>V-OS</organization>
             <organizationUrl>https://github.com/WeaveITMeta</organizationUrl>
         </developer>
     </developers>

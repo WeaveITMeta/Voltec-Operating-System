@@ -1,7 +1,7 @@
-# MACROHARD Minimal Configuration for x86_64
+# V-OS Minimal Configuration for x86_64
 # Bare-bones system for testing
 
-include = ["../macrohard-minimal.toml"]
+include = ["../v-os-minimal.toml"]
 
 # x86_64 specific settings
 [general]

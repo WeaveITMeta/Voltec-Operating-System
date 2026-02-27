@@ -1,5 +1,5 @@
 // =============================================================================
-// MACROHARD Quantum OS - SOTA QFT File Format Converter
+// V-OS - SOTA QFT File Format Converter
 // =============================================================================
 // Table of Contents:
 //   1. Advanced Encoding Strategies (Block, Angle, QSVT, Hamiltonian)

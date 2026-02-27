@@ -39,7 +39,7 @@ fn main() {
  *   - Most functions return QftError or set qft_get_last_error()
  *   - Use qft_get_last_error_message() for detailed error information
  *
- * Copyright (c) 2026 MACROHARD Quantum OS Team
+ * Copyright (c) 2026 V-OS Team
  * Licensed under MIT OR Apache-2.0
  */
 "#

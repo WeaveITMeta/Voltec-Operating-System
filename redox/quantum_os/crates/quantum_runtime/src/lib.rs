@@ -1,5 +1,5 @@
 // =============================================================================
-// MACROHARD Quantum OS - Quantum Runtime
+// V-OS - Quantum Runtime
 // =============================================================================
 // Table of Contents:
 //   1. Module Declarations

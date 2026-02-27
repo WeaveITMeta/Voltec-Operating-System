@@ -1,7 +1,7 @@
 # Kardashev Type I Civilization: Quantum-Enabled Pathways
 
 **Version**: 1.0.0  
-**Authors**: MACROHARD Quantum OS Team  
+**Authors**: V-OS Team  
 **Date**: 2026-01-25  
 
 ---
@@ -750,4 +750,4 @@ fn save_civilization_milestone(
 
 ---
 
-*Document created for MACROHARD Quantum OS - Enabling humanity's transition to a Type I civilization*
+*Document created for V-OS - Enabling humanity's transition to a Type I civilization*

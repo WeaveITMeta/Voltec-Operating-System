@@ -1,8 +1,8 @@
-# MACROHARD Hypervisor Recipe
+# V-OS Hypervisor Recipe
 # Built-in hypervisor for running Windows/Linux guests
 
 [source]
-git = "https://github.com/macrohard-os/hypervisor.git"
+git = "https://github.com/v-os-os/hypervisor.git"
 branch = "main"
 
 [build]
@@ -10,10 +10,10 @@ template = "cargo"
 
 [package]
 # Package metadata
-name = "macrohard-hypervisor"
+name = "v-os-hypervisor"
 version = "0.1.0"
-description = "MACROHARD OS built-in hypervisor with VT-x/AMD-V support"
-authors = ["MACROHARD Team"]
+description = "V-OS OS built-in hypervisor with VT-x/AMD-V support"
+authors = ["V-OS Team"]
 license = "MIT"
 
 # Dependencies on other recipes
@@ -31,5 +31,5 @@ features = ["intel-vtx", "amd-svm", "virtio"]
 
 # Installation paths
 [package.files]
-"/usr/bin/macrohard-hypervisor" = "target/release/macrohard-hypervisor"
-"/usr/lib/libmacrohard_hypervisor.so" = "target/release/libmacrohard_hypervisor.so"
+"/usr/bin/v-os-hypervisor" = "target/release/v-os-hypervisor"
+"/usr/lib/libv-os_hypervisor.so" = "target/release/libv-os_hypervisor.so"

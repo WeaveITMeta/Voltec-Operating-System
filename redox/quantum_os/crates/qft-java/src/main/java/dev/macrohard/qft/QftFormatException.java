@@ -1,4 +1,4 @@
-package dev.macrohard.qft;
+package dev.v-os.qft;
 
 /**
  * Exception thrown when a QFT file has an invalid format.

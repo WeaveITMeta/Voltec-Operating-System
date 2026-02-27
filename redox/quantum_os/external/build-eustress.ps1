@@ -1,5 +1,5 @@
 # =============================================================================
-# EustressEngine Build Script for Redox Quantum OS
+# EustressEngine Build Script for Redox V-OS
 # =============================================================================
 # This script sets up and builds EustressEngine with the Redox-compatible
 # workspace configuration (sparse checkout compatible).
@@ -138,7 +138,7 @@ switch ($Command.ToLower()) {
         Restore-OriginalWorkspace
     }
     default {
-        Write-Host "EustressEngine Build Script for Redox Quantum OS" -ForegroundColor Cyan
+        Write-Host "EustressEngine Build Script for Redox V-OS" -ForegroundColor Cyan
         Write-Host ""
         Write-Host "Usage: .\build-eustress.ps1 [command]" -ForegroundColor White
         Write-Host ""

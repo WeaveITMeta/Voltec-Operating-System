@@ -1,5 +1,5 @@
 // =============================================================================
-// MACROHARD Quantum OS - Bell State Demo
+// V-OS - Bell State Demo
 // =============================================================================
 // Table of Contents:
 //   1. Circuit construction with full snake_case naming
@@ -8,7 +8,7 @@
 //   4. Visualization output
 // =============================================================================
 // Purpose: Demonstrates complete workflow from circuit creation to visualization
-//          using the Quantum OS architecture with LogosQ integration.
+//          using the V-OS architecture with LogosQ integration.
 // =============================================================================
 
 use quantum_runtime::prelude::*;
@@ -28,7 +28,7 @@ use std::sync::Arc;
 
 fn main() {
     println!("╔══════════════════════════════════════════════════════════════════╗");
-    println!("║       MACROHARD Quantum OS - Bell State Demonstration            ║");
+    println!("║       V-OS - Bell State Demonstration            ║");
     println!("║                  LogosQ Integration Example                       ║");
     println!("╚══════════════════════════════════════════════════════════════════╝");
     println!();

@@ -1,6 +1,6 @@
 # MeaningPacket: Theoretical Foundation
 
-> **Purpose**: Rigorous justification for the `MeaningPacket` abstraction in MACROHARD Quantum OS.  
+> **Purpose**: Rigorous justification for the `MeaningPacket` abstraction in V-OS.  
 > This document grounds the "Meaning = Operator + Basis + Statistics" formulation in standard quantum measurement theory.
 
 ---
@@ -154,7 +154,7 @@ The `MeaningPacket` framing holds even beyond simple projective measurements.
 
 ---
 
-## 6. MeaningPacket in MACROHARD Quantum OS
+## 6. MeaningPacket in V-OS
 
 ### Rust Definition
 
@@ -273,4 +273,4 @@ pub enum BasisFrame {
 
 ---
 
-*Document generated for MACROHARD Quantum OS Phase 1.4 theoretical justification.*
+*Document generated for V-OS Phase 1.4 theoretical justification.*

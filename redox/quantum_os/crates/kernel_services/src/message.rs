@@ -1,5 +1,5 @@
 // =============================================================================
-// MACROHARD Quantum OS - IPC Message Types
+// V-OS - IPC Message Types
 // =============================================================================
 // Table of Contents:
 //   1. IpcMessage - Base message envelope

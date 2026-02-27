@@ -227,7 +227,7 @@ The module becomes available on https://pkg.go.dev automatically.
 ### Prerequisites
 
 1. Create Sonatype OSSRH account: https://central.sonatype.org
-2. Create Jira ticket to claim namespace `dev.macrohard.qft`
+2. Create Jira ticket to claim namespace `dev.v-os.qft`
 3. Set up GPG signing
 
 ### Configuration
@@ -276,7 +276,7 @@ mvn clean deploy -P release
 
 ```xml
 <dependency>
-    <groupId>dev.macrohard.qft</groupId>
+    <groupId>dev.v-os.qft</groupId>
     <artifactId>qft-java</artifactId>
     <version>1.0.0</version>
 </dependency>
@@ -318,7 +318,7 @@ sbt sonatypeBundleRelease
 ### Verification
 
 ```scala
-libraryDependencies += "dev.macrohard" %% "qft-scala" % "1.0.0"
+libraryDependencies += "dev.v-os" %% "qft-scala" % "1.0.0"
 ```
 
 ---
@@ -472,4 +472,4 @@ module not found
 ## Support
 
 - GitHub Issues: https://github.com/WeaveITMeta/Quantum-Operating-System/issues
-- Documentation: https://docs.macrohard.dev/qft
+- Documentation: https://docs.v-os.dev/qft

@@ -7,14 +7,14 @@ Production-grade Scala library for working with quantum states in the .qft forma
 ### sbt
 
 ```scala
-libraryDependencies += "dev.macrohard" %% "qft-scala" % "1.0.0"
+libraryDependencies += "dev.v-os" %% "qft-scala" % "1.0.0"
 ```
 
 ### Maven
 
 ```xml
 <dependency>
-    <groupId>dev.macrohard</groupId>
+    <groupId>dev.v-os</groupId>
     <artifactId>qft-scala_3</artifactId>
     <version>1.0.0</version>
 </dependency>
@@ -23,7 +23,7 @@ libraryDependencies += "dev.macrohard" %% "qft-scala" % "1.0.0"
 ## Quick Start
 
 ```scala
-import dev.macrohard.qft._
+import dev.v-os.qft._
 
 // Create a 4-qubit state
 val state = QftFile(4)
@@ -48,7 +48,7 @@ println(s"Fidelity: ${state.fidelity(loaded)}")
 ### Complex Numbers
 
 ```scala
-import dev.macrohard.qft.Complex
+import dev.v-os.qft.Complex
 
 val a = Complex(1, 2)                    // 1 + 2i
 val b = Complex.fromPolar(1, Math.PI/4)  // e^(iπ/4)

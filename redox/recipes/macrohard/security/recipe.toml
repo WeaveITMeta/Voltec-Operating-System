@@ -1,18 +1,18 @@
-# MACROHARD Security Daemon Recipe
-# Enhanced security services for MACROHARD OS
+# V-OS Security Daemon Recipe
+# Enhanced security services for V-OS
 
 [source]
-git = "https://github.com/macrohard-os/security.git"
+git = "https://github.com/v-os-os/security.git"
 branch = "main"
 
 [build]
 template = "cargo"
 
 [package]
-name = "macrohard-security"
+name = "v-os-security"
 version = "0.1.0"
-description = "MACROHARD OS security daemon with capability management and syscall filtering"
-authors = ["MACROHARD Team"]
+description = "V-OS security daemon with capability management and syscall filtering"
+authors = ["V-OS Team"]
 license = "MIT"
 
 dependencies = [
@@ -24,6 +24,6 @@ dependencies = [
 features = ["syscall-filter", "capability-audit", "secure-boot"]
 
 [package.files]
-"/usr/bin/macrohard-security-daemon" = "target/release/macrohard-security-daemon"
-"/usr/bin/macrohard-audit" = "target/release/macrohard-audit"
-"/etc/macrohard/security.toml" = "config/security.toml"
+"/usr/bin/v-os-security-daemon" = "target/release/v-os-security-daemon"
+"/usr/bin/v-os-audit" = "target/release/v-os-audit"
+"/etc/v-os/security.toml" = "config/security.toml"

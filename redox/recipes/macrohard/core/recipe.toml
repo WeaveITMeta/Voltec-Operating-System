@@ -1,19 +1,19 @@
-# MACROHARD Core Package
-# Essential MACROHARD-specific utilities and branding
+# V-OS Core Package
+# Essential V-OS-specific utilities and branding
 
 [source]
 # Will be replaced with actual repo when created
-git = "https://github.com/macrohard-os/core.git"
+git = "https://github.com/v-os-os/core.git"
 branch = "main"
 
 [build]
 template = "cargo"
 
 [package]
-name = "macrohard-core"
+name = "v-os-core"
 version = "0.1.0"
-description = "MACROHARD OS core utilities and branding"
-authors = ["MACROHARD Team"]
+description = "V-OS core utilities and branding"
+authors = ["V-OS Team"]
 license = "MIT"
 
 dependencies = [
@@ -21,6 +21,6 @@ dependencies = [
 ]
 
 [package.files]
-"/usr/bin/macrohard-info" = "target/release/macrohard-info"
-"/usr/share/macrohard/VERSION" = "VERSION"
-"/usr/share/macrohard/branding/logo.txt" = "assets/logo.txt"
+"/usr/bin/v-os-info" = "target/release/v-os-info"
+"/usr/share/v-os/VERSION" = "VERSION"
+"/usr/share/v-os/branding/logo.txt" = "assets/logo.txt"

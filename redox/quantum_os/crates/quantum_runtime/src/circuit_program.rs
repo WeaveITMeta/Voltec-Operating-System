@@ -1,5 +1,5 @@
 // =============================================================================
-// MACROHARD Quantum OS - Circuit Program IR
+// V-OS - Circuit Program IR
 // =============================================================================
 // Table of Contents:
 //   1. QuantumCircuitStructure - Renamed from LogosQ Circuit

@@ -14,7 +14,7 @@ class LibQftConan(ConanFile):
     name = "libqft"
     version = "1.0.0"
     license = "MIT", "Apache-2.0"
-    author = "MACROHARD Quantum OS Team <quantum@macrohard.dev>"
+    author = "V-OS Team <quantum@v-os.dev>"
     url = "https://github.com/WeaveITMeta/Quantum-Operating-System"
     description = "Production-grade C/C++ library for Quantum File Type (.qft) format"
     topics = ("quantum", "quantum-computing", "mps", "tensor-network", "qft")

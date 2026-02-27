@@ -1,7 +1,7 @@
 # Quantum Chemistry Implementation Guide
 
 **Version**: 1.0.0  
-**Authors**: MACROHARD Quantum OS Team  
+**Authors**: V-OS Team  
 **Date**: 2026-01-25  
 
 ---
@@ -235,4 +235,4 @@ fn scan_pes(molecule_fn: impl Fn(f64) -> Hamiltonian, r_values: &[f64]) {
 
 ---
 
-*Document created for MACROHARD Quantum OS*
+*Document created for V-OS*

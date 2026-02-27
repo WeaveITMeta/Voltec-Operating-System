@@ -1,5 +1,5 @@
 // =============================================================================
-// MACROHARD Quantum OS - Async Execution Runtime
+// V-OS - Async Execution Runtime
 // =============================================================================
 // Table of Contents:
 //   1. AsyncQuantumExecutionEngine - Async circuit execution

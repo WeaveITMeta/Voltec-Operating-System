@@ -1,4 +1,4 @@
-package dev.macrohard.qft;
+package dev.v-os.qft;
 
 /**
  * Configuration for QFT file operations.

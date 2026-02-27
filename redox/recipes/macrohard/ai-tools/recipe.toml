@@ -1,18 +1,18 @@
-# MACROHARD AI Tools Recipe
+# V-OS AI Tools Recipe
 # AI-assisted development and testing utilities
 
 [source]
-git = "https://github.com/macrohard-os/ai-tools.git"
+git = "https://github.com/v-os-os/ai-tools.git"
 branch = "main"
 
 [build]
 template = "cargo"
 
 [package]
-name = "macrohard-ai-tools"
+name = "v-os-ai-tools"
 version = "0.1.0"
 description = "AI-assisted code scaffolding, fuzzing, and static analysis tools"
-authors = ["MACROHARD Team"]
+authors = ["V-OS Team"]
 license = "MIT"
 
 dependencies = [
@@ -23,7 +23,7 @@ dependencies = [
 features = ["code-scaffold", "fuzz-harness", "unsafe-audit", "static-analysis"]
 
 [package.files]
-"/usr/bin/macrohard-scaffold" = "target/release/macrohard-scaffold"
-"/usr/bin/macrohard-fuzz" = "target/release/macrohard-fuzz"
-"/usr/bin/macrohard-audit" = "target/release/macrohard-audit"
-"/usr/bin/macrohard-analyze" = "target/release/macrohard-analyze"
+"/usr/bin/v-os-scaffold" = "target/release/v-os-scaffold"
+"/usr/bin/v-os-fuzz" = "target/release/v-os-fuzz"
+"/usr/bin/v-os-audit" = "target/release/v-os-audit"
+"/usr/bin/v-os-analyze" = "target/release/v-os-analyze"

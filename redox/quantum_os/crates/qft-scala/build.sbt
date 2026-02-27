@@ -34,9 +34,9 @@ lazy val root = (project in file("."))
     ),
     developers := List(
       Developer(
-        id = "macrohard",
-        name = "MACROHARD Quantum OS Team",
-        email = "quantum@macrohard.dev",
+        id = "v-os",
+        name = "V-OS Team",
+        email = "quantum@v-os.dev",
         url = url("https://github.com/WeaveITMeta")
       )
     ),

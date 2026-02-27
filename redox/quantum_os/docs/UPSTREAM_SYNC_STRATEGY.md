@@ -1,9 +1,9 @@
-# Upstream Sync Strategy: Redox OS + Quantum OS
+# Upstream Sync Strategy: Redox OS + V-OS
 
 ## Repository Structure
 
 ```
-MACROHARD-Rust-X/
+V-OS-Rust-X/
 ├── redox/                    # Fork of redox-os/redox (upstream)
 │   ├── rust/                 # Submodule: redox-os/rust
 │   ├── recipes/              # Upstream package recipes
@@ -23,7 +23,7 @@ MACROHARD-Rust-X/
 | `redox/mk/` | ✅ Yes | ❌ No |
 | `redox/config/` | ✅ Yes | ❌ No |
 | `redox/quantum_os/` | ❌ No | ✅ Yes |
-| `redox/MACROHARD.md` | ❌ No | ✅ Yes |
+| `redox/V-OS.md` | ❌ No | ✅ Yes |
 | `redox/rust/` | ✅ Submodule | ⚠️ Depends |
 
 **Key insight**: `quantum_os/` is entirely our addition - upstream Redox has no such directory. It will **never** be overwritten by upstream syncs.
@@ -79,7 +79,7 @@ git commit
 
 ✅ SAFE TO EDIT:
 - redox/quantum_os/**
-- redox/MACROHARD.md
+- redox/V-OS.md
 - redox/Start.md (our addition)
 - redox/Ports.md (our addition)
 ```
@@ -128,7 +128,7 @@ Build with: `make CONFIG=quantum_os/config/quantum.toml`
 
 | Component | Reason |
 |-----------|--------|
-| `qos-shell` | Quantum OS branding/UX |
+| `qos-shell` | V-OS branding/UX |
 | `eustress-quantum` | Integration layer |
 | Direct Eustress integration | Competitive advantage |
 | Kardashev simulation configs | Research IP |

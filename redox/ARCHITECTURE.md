@@ -1,4 +1,4 @@
-# MACROHARD OS Architecture
+# V-OS Architecture
 
 ## Table of Contents
 
@@ -17,7 +17,7 @@
 
 ## Overview
 
-MACROHARD OS is built on a **Rust microkernel architecture** forked from Redox OS. The design prioritizes:
+V-OS is built on a **Rust microkernel architecture** forked from Redox OS. The design prioritizes:
 
 - **Memory Safety**: Rust's ownership model eliminates entire classes of vulnerabilities
 - **Modularity**: Userspace drivers and services for reliability and isolation
@@ -200,7 +200,7 @@ pub struct Context {
 
 ### Scheme-Based IPC
 
-MACROHARD uses **schemes** for all IPC—a URL-like namespace for resources:
+V-OS uses **schemes** for all IPC—a URL-like namespace for resources:
 
 ```
 scheme://path/to/resource

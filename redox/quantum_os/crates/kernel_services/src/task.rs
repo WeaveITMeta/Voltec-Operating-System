@@ -1,5 +1,5 @@
 // =============================================================================
-// MACROHARD Quantum OS - Task and Process Management
+// V-OS - Task and Process Management
 // =============================================================================
 // Table of Contents:
 //   1. ProcessContext - Classical process context

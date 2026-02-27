@@ -1,5 +1,5 @@
 // =============================================================================
-// MACROHARD Quantum OS - QFT File Format Converter
+// V-OS - QFT File Format Converter
 // =============================================================================
 // Table of Contents:
 //   1. ConversionConfig - Configuration for file conversions

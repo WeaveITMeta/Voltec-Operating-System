@@ -1,5 +1,5 @@
 // =============================================================================
-// MACROHARD Quantum OS - Quantum Golay Code [[23,1,7]]
+// V-OS - Quantum Golay Code [[23,1,7]]
 // =============================================================================
 // Table of Contents:
 //   1. Stabilizer Generators - Complete X and Z stabilizer definitions

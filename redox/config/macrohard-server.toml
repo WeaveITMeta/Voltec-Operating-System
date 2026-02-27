@@ -1,4 +1,4 @@
-# MACROHARD Server Configuration
+# V-OS Server Configuration
 # Headless server variant optimized for cloud/edge deployment
 
 include = ["server.toml"]
@@ -13,39 +13,39 @@ filesystem_size = 1024
 # Server packages inherited from server.toml
 
 # Hypervisor support for VM hosting
-# macrohard-hypervisor = {}
+# v-os-hypervisor = {}
 
 # Security hardening
-# macrohard-security = {}
+# v-os-security = {}
 
 [[files]]
 path = "/etc/hostname"
-data = "macrohard-server"
+data = "v-os-server"
 
 [[files]]
 path = "/usr/lib/os-release"
 data = """
-PRETTY_NAME="MACROHARD Server 0.1.0-alpha"
-NAME="MACROHARD Server"
+PRETTY_NAME="V-OS Server 0.1.0-alpha"
+NAME="V-OS Server"
 VERSION_ID="0.1.0"
 VERSION="0.1.0-alpha (Forked from Redox OS 0.9.0)"
-ID="macrohard-os"
+ID="v-os-os"
 ID_LIKE="redox-os"
 VARIANT="Server"
 VARIANT_ID="server"
 
-HOME_URL="https://macrohard-os.org/"
-DOCUMENTATION_URL="https://macrohard-os.org/docs/"
-SUPPORT_URL="https://macrohard-os.org/community/"
+HOME_URL="https://v-os-os.org/"
+DOCUMENTATION_URL="https://v-os-os.org/docs/"
+SUPPORT_URL="https://v-os-os.org/community/"
 """
 
 [[files]]
-path = "/usr/lib/init.d/50_macrohard"
+path = "/usr/lib/init.d/50_v-os"
 data = """
-# MACROHARD Server initialization
+# V-OS Server initialization
 # Hypervisor service for VM hosting
-# nowait macrohard-hypervisor --server-mode
+# nowait v-os-hypervisor --server-mode
 
 # Security daemon
-# nowait macrohard-security-daemon
+# nowait v-os-security-daemon
 """

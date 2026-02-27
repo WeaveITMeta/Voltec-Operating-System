@@ -1,12 +1,12 @@
 // =============================================================================
-// MACROHARD Quantum OS - Capability-Based Access Control
+// V-OS - Capability-Based Access Control
 // =============================================================================
 // Table of Contents:
 //   1. AccessCapability - Base capability structure
 //   2. QuantumAccessPermission - Quantum-specific permissions
 //   3. CapabilitySet - Collection of capabilities for a process
 // =============================================================================
-// Purpose: Implements capability-based security for the Quantum OS. Each
+// Purpose: Implements capability-based security for the V-OS. Each
 //          process holds capabilities that grant access to specific resources.
 //          Extended with quantum-specific permissions for device access.
 // =============================================================================

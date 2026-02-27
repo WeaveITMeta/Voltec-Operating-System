@@ -1,5 +1,5 @@
 // =============================================================================
-// MACROHARD Quantum OS - State Backend
+// V-OS - State Backend
 // =============================================================================
 // Table of Contents:
 //   1. QuantumStateBackendInterface - Trait for state representations

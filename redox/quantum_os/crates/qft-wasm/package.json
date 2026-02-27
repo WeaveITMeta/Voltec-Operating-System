@@ -28,7 +28,7 @@
     "tensor-network",
     "quantum-computing"
   ],
-  "author": "MACROHARD Quantum OS Team",
+  "author": "V-OS Team",
   "license": "MIT OR Apache-2.0",
   "bugs": {
     "url": "https://github.com/WeaveITMeta/Quantum-Operating-System/issues"

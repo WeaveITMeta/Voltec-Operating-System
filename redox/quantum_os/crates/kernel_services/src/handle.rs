@@ -1,5 +1,5 @@
 // =============================================================================
-// MACROHARD Quantum OS - Resource Handles
+// V-OS - Resource Handles
 // =============================================================================
 // Table of Contents:
 //   1. ResourceHandle - Base handle type for all OS resources

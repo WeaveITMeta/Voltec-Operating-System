@@ -1,5 +1,5 @@
 // =============================================================================
-// MACROHARD Quantum OS - QFT Format Benchmarking Suite
+// V-OS - QFT Format Benchmarking Suite
 // =============================================================================
 // Table of Contents:
 //   1. Reproducible State Generators - Deterministic quantum state creation

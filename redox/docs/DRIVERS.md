@@ -1,4 +1,4 @@
-# MACROHARD OS Driver Development Guide
+# V-OS Driver Development Guide
 
 ## Table of Contents
 
@@ -15,7 +15,7 @@
 
 ## Overview
 
-MACROHARD OS uses a **userspace driver model** inherited from Redox OS. All drivers run as regular userspace processes, communicating with the kernel through schemes.
+V-OS uses a **userspace driver model** inherited from Redox OS. All drivers run as regular userspace processes, communicating with the kernel through schemes.
 
 ### Benefits
 
@@ -130,7 +130,7 @@ my-driver/
 │   ├── device.rs        # Device abstraction
 │   ├── scheme.rs        # Scheme handler
 │   └── registers.rs     # Hardware registers
-└── recipe.toml          # MACROHARD recipe
+└── recipe.toml          # V-OS recipe
 ```
 
 ### Cargo.toml
@@ -158,7 +158,7 @@ bitflags = "2.0"
 ### Main Entry Point
 
 ```rust
-//! My Driver - Example MACROHARD OS driver
+//! My Driver - Example V-OS driver
 //! 
 //! # Table of Contents
 //! 1. Initialization
@@ -874,10 +874,10 @@ impl NetworkDriver {
 ## Recipe Template
 
 ```toml
-# recipe.toml for MACROHARD driver
+# recipe.toml for V-OS driver
 
 [source]
-git = "https://github.com/macrohard-os/my-driver.git"
+git = "https://github.com/v-os-os/my-driver.git"
 branch = "main"
 
 [build]
@@ -886,7 +886,7 @@ template = "cargo"
 [package]
 name = "my-driver"
 version = "0.1.0"
-description = "My MACROHARD OS driver"
+description = "My V-OS driver"
 authors = ["Your Name"]
 license = "MIT"
 

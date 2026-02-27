@@ -1,5 +1,5 @@
 // =============================================================================
-// MACROHARD Quantum OS - Bond Dimension Optimization
+// V-OS - Bond Dimension Optimization
 // =============================================================================
 // Table of Contents:
 //   1. BondDimensionOptimizer - Automatic χ Selection

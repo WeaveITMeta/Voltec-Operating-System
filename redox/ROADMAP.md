@@ -1,4 +1,4 @@
-# MACROHARD OS Development Roadmap
+# V-OS Development Roadmap
 
 ## Version 0.1.0-alpha (Current)
 
@@ -6,7 +6,7 @@
 
 ### Completed
 - [x] Fork Redox OS repository
-- [x] Create MACROHARD branding
+- [x] Create V-OS branding
 - [x] Define configuration variants (desktop, server, minimal)
 
 ### In Progress
@@ -203,17 +203,17 @@
 
 ## Long-Term Vision
 
-### MACROHARD Desktop
+### V-OS Desktop
 - Daily-driver OS for end users
 - Seamless Windows app integration via hypervisor
 - Modern, accessible UI
 
-### MACROHARD Server
+### V-OS Server
 - Cloud/edge deployment
 - Container and VM hosting
 - High-availability features
 
-### MACROHARD Embedded
+### V-OS Embedded
 - IoT and embedded systems
 - Minimal footprint
 - Real-time capabilities

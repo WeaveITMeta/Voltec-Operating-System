@@ -1,5 +1,5 @@
 # =============================================================================
-# Quantum OS Shell - Slint-based Desktop Environment
+# V-OS Shell - Slint-based Desktop Environment
 # =============================================================================
 # Table of Contents:
 #   1. Package Configuration
@@ -11,8 +11,8 @@
 name = "qos-shell"
 version = "0.1.0"
 edition = "2021"
-authors = ["MACROHARD Quantum OS Team"]
-description = "Quantum OS Desktop Shell - Slint-based UI with QDB filesystem"
+authors = ["V-OS Team"]
+description = "V-OS Desktop Shell - Slint-based UI with QDB filesystem"
 license = "MIT"
 repository = "https://github.com/WeaveITMeta/Quantum-Operating-System"
 

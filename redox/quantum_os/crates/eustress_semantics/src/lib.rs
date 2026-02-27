@@ -1,5 +1,5 @@
 // =============================================================================
-// MACROHARD Quantum OS - Eustress Semantics Layer
+// V-OS - Eustress Semantics Layer
 // =============================================================================
 // Table of Contents:
 //   1. MeaningPacket - Core semantic container

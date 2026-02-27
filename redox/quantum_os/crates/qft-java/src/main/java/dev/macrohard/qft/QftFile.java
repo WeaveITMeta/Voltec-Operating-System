@@ -1,4 +1,4 @@
-package dev.macrohard.qft;
+package dev.v-os.qft;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -33,7 +33,7 @@ import java.util.Map;
  * QftFile loaded = QftFile.load("state.qft");
  * }</pre>
  * 
- * @author MACROHARD Quantum OS Team
+ * @author V-OS Team
  * @version 1.0.0
  */
 public class QftFile {

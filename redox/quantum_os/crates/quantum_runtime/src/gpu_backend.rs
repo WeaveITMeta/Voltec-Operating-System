@@ -1,5 +1,5 @@
 // =============================================================================
-// MACROHARD Quantum OS - GPU Backend Module
+// V-OS - GPU Backend Module
 // =============================================================================
 // Table of Contents:
 //   1. GpuStateBackend Trait

@@ -1,5 +1,5 @@
 // =============================================================================
-// MACROHARD Quantum OS - OpenQASM 3 Export Module
+// V-OS - OpenQASM 3 Export Module
 // =============================================================================
 // Table of Contents:
 //   1. OpenQASM3Exporter - Main export functionality
@@ -221,7 +221,7 @@ impl OpenQasm3Exporter {
             if let Some(ts) = &provenance.created_at {
                 writeln!(output, "// Created: {}", ts).unwrap();
             }
-            writeln!(output, "// Exported from MACROHARD Quantum OS (.qft format)").unwrap();
+            writeln!(output, "// Exported from V-OS (.qft format)").unwrap();
             writeln!(output).unwrap();
         }
         

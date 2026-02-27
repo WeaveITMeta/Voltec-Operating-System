@@ -1,6 +1,6 @@
-//! Quantum OS Shell - Slint-based Desktop Environment
+//! V-OS Shell - Slint-based Desktop Environment
 //!
-//! A modern desktop shell for Quantum OS featuring:
+//! A modern desktop shell for V-OS featuring:
 //! - QDB-backed filesystem browsing
 //! - Quantum state (.qft) preview and management
 //! - Eustress 3D integration for scene visualization
@@ -65,7 +65,7 @@ impl AppState {
         }
         
         // Add classical files
-        let _ = db.put("qfs:/home/user/notes.txt", "Hello Quantum OS!");
+        let _ = db.put("qfs:/home/user/notes.txt", "Hello V-OS!");
         let _ = db.put("qfs:/home/user/Documents", Value::Json(serde_json::json!({
             "type": "directory",
             "items": 12
@@ -89,7 +89,7 @@ fn main() {
         .with_max_level(tracing::Level::INFO)
         .init();
     
-    info!("Starting Quantum OS Shell...");
+    info!("Starting V-OS Shell...");
     
     // Create application state
     let state = Arc::new(RwLock::new(AppState::new()));

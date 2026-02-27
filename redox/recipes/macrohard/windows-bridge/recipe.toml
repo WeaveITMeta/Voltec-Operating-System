@@ -1,22 +1,22 @@
-# MACROHARD Windows Bridge Recipe
+# V-OS Windows Bridge Recipe
 # Seamless Windows guest integration
 
 [source]
-git = "https://github.com/macrohard-os/windows-bridge.git"
+git = "https://github.com/v-os-os/windows-bridge.git"
 branch = "main"
 
 [build]
 template = "cargo"
 
 [package]
-name = "macrohard-windows-bridge"
+name = "v-os-windows-bridge"
 version = "0.1.0"
 description = "Windows guest integration with clipboard sync, shared folders, and seamless windows"
-authors = ["MACROHARD Team"]
+authors = ["V-OS Team"]
 license = "MIT"
 
 dependencies = [
-    "macrohard-hypervisor",
+    "v-os-hypervisor",
     "orbital",
     "relibc",
 ]
@@ -25,5 +25,5 @@ dependencies = [
 features = ["clipboard-sync", "shared-folders", "seamless-mode"]
 
 [package.files]
-"/usr/bin/macrohard-windows-bridge" = "target/release/macrohard-windows-bridge"
+"/usr/bin/v-os-windows-bridge" = "target/release/v-os-windows-bridge"
 "/usr/lib/libwindows_bridge.so" = "target/release/libwindows_bridge.so"

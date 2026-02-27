@@ -1,5 +1,5 @@
 # =============================================================================
-# MACROHARD Quantum OS - Workspace Root
+# V-OS - Workspace Root
 # =============================================================================
 # Table of Contents:
 #   1. Workspace Configuration - Crate members and shared settings
@@ -28,10 +28,10 @@ members = [
 # =============================================================================
 [workspace.package]
 version = "0.1.0"
-authors = ["MACROHARD Team"]
+authors = ["V-OS Team"]
 edition = "2024"
 license = "MIT"
-repository = "https://github.com/macrohard-os/macrohard"
+repository = "https://github.com/v-os-os/v-os"
 rust-version = "1.83"
 
 # =============================================================================
@@ -84,7 +84,7 @@ cbindgen = "0.27"
 # Workspace Metadata
 # =============================================================================
 [workspace.metadata.quantum_os]
-description = "MACROHARD Quantum OS - Microkernel + Quantum Runtime"
+description = "V-OS - Microkernel + Quantum Runtime"
 architecture = "hybrid_classical_quantum"
 kernel_model = "capability_based_microkernel"
 quantum_backend = "logosq"
